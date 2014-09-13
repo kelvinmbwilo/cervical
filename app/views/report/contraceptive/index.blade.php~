@@ -1,0 +1,105 @@
+@extends('layout.master')
+
+@section('breadcumbs')
+<li>
+    <a href="{{ url('home') }}">Dashboard</a>
+</li>
+<li>
+    <a href="{{ url('reports') }}">Reports</a>
+</li>
+<li class="active">Contraceptive History</li>
+
+@stop
+
+@section('contents')
+<h4>Report Generation</h4>
+<h4>Specific Indicators</h4>
+{{ Form::open(array("url"=>url("reports/process/"),"class"=>"form-horizontal","id"=>'formms')) }}
+<div class='form-group' style="margin-bottom: 10px">
+    
+    <div class='col-sm-3'>
+        Region<br>{{ Form::select('region',array('all'=>'all')+Region::all()->lists('region','id'),'',array('class'=>'form-control','required'=>'requiered')) }}
+    </div>
+    <div class='col-sm-3'>
+        District<br><span id="district-area">{{ Form::select('district',array('all'=>'all')+District::lists('district','id'),'',array('class'=>'form-control','required'=>'requiered')) }}</span>
+    </div>
+    <div class='col-sm-3'>
+        Gender <br>{{ Form::select('colposcopy_status',array("All Sex","Female","Male"),'',array('class'=>'form-control','required'=>'requiered')) }}
+    </div>
+    <div class='col-sm-3'>
+        Age Range<br>{{ Form::select('colpo_result',array("All Ages","Write Age","2","3","4","5","6","7","8","9","10"),'',array('class'=>'form-control')) }}
+    </div>
+</div>
+
+<div class='form-group'>
+    <div class='col-sm-2'>
+        Marital Status<br>{{ Form::select('marital',array("Married"=>"Married","Cohabit"=>"Cohabit","Single-never married"=>"Single-never married","Widowed"=>"Widowed","Separated/Divorced"=>"Separated/Divorced"),'',array('class'=>'form-control','required'=>'requiered')) }}
+    </div>
+    <div class='col-sm-5'>
+        From:{{ Form::text('from','',array('class'=>'form-control','placeholder'=>'Start Date','required'=>'required','id'=>'from')) }}
+    </div>
+    <div class='col-sm-5'>
+        To:{{ Form::text('to','',array('class'=>'form-control','placeholder'=>'End Date','required'=>'required','id'=>'to')) }}
+    </div>
+</div>
+
+<div class="btn btn-info btn-sm tog" style="margin: 10px" id="toggleadv">Advanced Filters</div>
+<div class="advancefilters">
+
+    <!--    contraceptive History Filters-->
+    <h4>Contraceptive History</h4>
+    <div class='form-group'>
+        <div class='col-sm-6'>
+            contraceptive History<br>{{ Form::select('ever_used_contra',array('all'=>'All Patients','using'=>'Using Contraceptive','never'=>'Not Using Contraceptive','ever'=>'Patient Found Using Contraceptive Before Visit','during'=>'Patient Found Using Contraceptive At time of Visit'),'',array('class'=>'form-control','required'=>'requiered')) }}
+        </div>
+        <div class='col-sm-6'>
+            <span id="prevcontralist">Type Of Contraceptive<br>{{ Form::select('ever_contra',array('all'=>'All Contraceptives')+ContraceptiveResult::all()->lists('name','id'),'',array('class'=>'form-control')) }}</span>
+        </div>
+    </div>
+
+</div>
+{{ Form::close() }}
+<div class="col-xs-12" style="margin-top: 25px">
+    <div class="col-md-2 btn btn-primary" id="table">Table</div>
+    <div class="col-md-1"></div>
+    <div class="col-md-2 btn btn-primary" id="bar">Bar</div>
+    <div class="col-md-1"></div>
+    <div class="col-md-2 btn btn-primary" id="line">Line</div>
+    <div class="col-md-1"></div>
+    <div class="col-md-2 btn btn-primary" id="pie">Pie</div>
+</div>
+<div id="chartarea" class="col-xs-12" style="margin-top: 25px">
+
+</div>
+{{ HTML::script("js/report/contraceptive.js") }}
+<script>
+    $(document).ready(function (){
+
+        $( "#from" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat:"yy-mm-dd",
+            onClose: function( selectedDate ) {
+                $( "#to" ).datepicker( "option", "minDate", selectedDate );
+            }
+        });
+        $( "#to" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat:"yy-mm-dd",
+            onClose: function( selectedDate ) {
+                $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+            }
+        });
+
+        $("select[name=region]").change(function(){
+            $("#district-area").html("<i class='fa fa-spinner fa-spin'></i> Wait... ")
+            $.post("<?php echo url('patient/region_check') ?>/"+$(this).val(),function(dat){
+                $("#district-area").html(dat);
+            })
+        })
+
+
+    });
+</script>
+@stop
