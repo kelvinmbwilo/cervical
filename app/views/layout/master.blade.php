@@ -39,7 +39,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="solid-bg-5" style="margin-top: 50px">
+<body class="solid-bg-5" style="margin-top: 50px;margin-bottom: 80px">
 
 <!-- Preloader -->
 <div class="mask"><div id="loader"></div></div>
@@ -340,7 +340,7 @@
 
 
     <!-- content main container -->
-    <div class="main">
+    <div class="main" style="margin-top:5px; margin-bottom: 50px;">
 
 
 
@@ -363,7 +363,9 @@
 
 </div>
 <!-- Page content end -->
+<div class="row" style="height: 50px">
 
+</div>
 
 
 

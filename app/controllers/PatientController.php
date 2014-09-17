@@ -170,6 +170,8 @@ class PatientController extends \BaseController {
             $report->cd4_count = Input::has("prev_cd4");
         }
         $report->save();
+        $msg = "Patient Added Successfull";
+        return View::make("patient.index",compact("msg"));
 	}
 
 
@@ -268,6 +270,7 @@ class PatientController extends \BaseController {
         $patient->hospital_id = Input::get("hosp_no");
         $patient->phone = Input::get("phone");
         $patient->facility_id = Input::get("facility");
+        $patient->save();
         //adding patient visit info
         $visit = Visit::create(array(
             "patient_id" => $patient->id,
@@ -385,5 +388,7 @@ class PatientController extends \BaseController {
             $report->cd4_count = Input::has("prev_cd4");
         }
         $report->save();
+         $msg = "Patient followup stored successfull";
+        return View::make('visit.index',compact('patient',"msg"));
     }
 }

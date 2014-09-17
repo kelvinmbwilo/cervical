@@ -20,6 +20,12 @@ Visit History
 @stop
 
 @section('contents')
+@if(isset($msg))
+<div class="alert alert-success fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+    <strong>SUCCESS!</strong> Patient Followup Added Successful.
+</div>
+@endif
 <span class="lead">Visits History For: {{ $patient->first_name }} {{ $patient->middle_name }} {{ $patient->last_name }}</span>
 <div class="panel-group" id="accordion">
 <?php $i=1 ?>

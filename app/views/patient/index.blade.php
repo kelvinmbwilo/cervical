@@ -16,7 +16,12 @@ Patient Registration
 @stop
 
 @section('contents')
-
+@if(isset($msg))
+<div class="alert alert-success fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+    <strong>SUCCESS!</strong> Patient Added Successful.
+</div>
+@endif
 {{ Form::open(array("url"=>url('patient/add'),"class"=>"form-horizontal","id"=>'FileUploader')) }}
 <div class="col-md-12" style="padding-left: 5px">
     <div class="col-md-4">
@@ -171,15 +176,15 @@ Patient Registration
 
 
 
-        $('#FileUploader').on('submit', function(e) {
-            e.preventDefault();
-            $("#output").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Making changes please wait...</span><h3>");
-            $(this).ajaxSubmit({
-                target: '#output',
-                success:  afterSuccess
-            });
-
-        });
+//        $('#FileUploader').on('submit', function(e) {
+//            e.preventDefault();
+//            $("#output").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Making changes please wait...</span><h3>");
+//            $(this).ajaxSubmit({
+//                target: '#output',
+//                success:  afterSuccess
+//            });
+//
+//        });
 
         function afterSuccess(){
 <!--            $('#FileUploader').resetForm();-->

@@ -26,7 +26,7 @@
 
     </div>
     <div class="col-md-4">
-        Phone Number {{ Form::text('phone','',array('class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
+        Phone Number {{ Form::text('phone',$patient->phone,array('class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
     </div>
     <div class="col-md-4">
         Facility<br>{{ Form::select('facility',Facility::all()->lists('facility_name','id'),$patient->facility_id,array('class'=>'form-control','required'=>'requiered')) }}
@@ -37,7 +37,7 @@
 <div class="col-md-12">
     <span class="help-block">**The pre filled values are values from last visit.</span>
     <div class="col-md-6" style="padding-left: 0px;padding-right: 5px">
-        <h3 class="">Demographic</h3>
+        <h3 class="" style="margin-top: 0px">Demographic</h3>
         <div class="panel panel-default">
             <div class="panel-body">
                 @include('follow_up.demograph')
@@ -46,7 +46,7 @@
 
     </div>
     <div class="col-md-6" style="padding-left: 5px;padding-right: 0px">
-        <h3 class="">Gynecology History</h3>
+        <h3 class="" style="margin-top: 0px">Gynecology History</h3>
         <div class="panel panel-default">
             <div class="panel-body">
                 @include('follow_up.gynocology')
@@ -57,26 +57,26 @@
 
 </div>
 <div class="col-md-12">
-    <h3>Contraceptive History</h3>
+    <h3 style="margin-top: 0px">Contraceptive History</h3>
     @include('follow_up.contraceptive')
 
 </div>
 
 <div class="col-md-12">
-    <h3>HIV</h3>
+    <h3 style="margin-top: 0px">HIV</h3>
     @include('follow_up.hiv')
 
 </div>
 
 <div class="col-md-12">
-    <h3>VIA</h3>
+    <h3 style="margin-top: 0px">VIA</h3>
     @include('follow_up.via')
 
 </div>
 
 <div class="col-md-12">
     <div class="col-md-6" style="padding-left: 0px;padding-right: 5px">
-        <h3 class="">Colposcopy</h3>
+        <h3 class="" style="margin-top: 0px">Colposcopy</h3>
         <div class="panel panel-default">
             <div class="panel-body">
                 @include('follow_up.colposcopy')
@@ -85,7 +85,7 @@
 
     </div>
     <div class="col-md-6" style="padding-left: 5px;padding-right: 0px">
-        <h3 class="">Pap Smear</h3>
+        <h3 class="" style="margin-top: 0px">Pap Smear</h3>
         <div class="panel panel-default">
             <div class="panel-body">
                 @include('follow_up.pap_smea')
@@ -97,7 +97,7 @@
 </div>
 
 <div class="col-md-12">
-    <h3>Intervention</h3>
+    <h3 style="margin-top: 0px">Intervention</h3>
     @include('follow_up.intervention')
 
 </div>
@@ -109,15 +109,15 @@
 
 <script>
     $(document).ready(function (){
-        $('#FileUploader').on('submit', function(e) {
-            e.preventDefault();
-            $("#output").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Making changes please wait...</span><h3>");
-            $(this).ajaxSubmit({
-                target: '#output',
-                success:  afterSuccess
-            });
-
-        });
+//        $('#FileUploader').on('submit', function(e) {
+//            e.preventDefault();
+//            $("#output").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Making changes please wait...</span><h3>");
+//            $(this).ajaxSubmit({
+//                target: '#output',
+//                success:  afterSuccess
+//            });
+//
+//        });
 
         function afterSuccess(){
 <!--            $('#FileUploader').resetForm();-->
