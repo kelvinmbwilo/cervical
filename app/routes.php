@@ -18,7 +18,7 @@ Route::get('/', function()
 
 Route::get('home', function()
 {
-    return View::make('tables');
+    return View::make('patient.list');
 });
 
 

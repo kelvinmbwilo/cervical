@@ -1,4 +1,4 @@
-<div class="col-md-12" style="padding-left: 5px;padding-right: 0px">
+
     <div class="panel panel-default">
         <div class="panel-body">
 
@@ -32,7 +32,6 @@
 
             </div>
 
-        </div>
         <script>
             $(document).ready(function (){
                 var histology = $("#histology").html()

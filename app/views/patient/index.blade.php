@@ -1,5 +1,9 @@
 @extends('layout.master')
 
+@section('title')
+Patient Registration
+@stop
+
 @section('breadcumbs')
 <li>
     <a href="{{ url('home') }}">Dashboard</a>
@@ -14,143 +18,22 @@
 @section('contents')
 
 {{ Form::open(array("url"=>url('patient/add'),"class"=>"form-horizontal","id"=>'FileUploader')) }}
-
-<!-- tile -->
-<section id="rootwizard" class="tabbable transparent tile">
-
-
-
-    <!-- tile header -->
-    <div class="tile-header transparent">
-        <h1><strong>Form</strong> Wizard</h1>
-        <div class="controls">
-            <a href="form-wizard.html#" class="minimize"><i class="fa fa-chevron-down"></i></a>
-            <a href="form-wizard.html#" class="refresh"><i class="fa fa-refresh"></i></a>
-            <a href="form-wizard.html#" class="remove"><i class="fa fa-times"></i></a>
-        </div>
-    </div>
-    <!-- /tile header -->
-
-    <!-- tile widget -->
-    <div class="tile-widget nopadding color transparent-black rounded-top-corners">
-        <ul>
-            <li><a href="form-wizard.html#tab1" data-toggle="tab">User Data</a></li>
-            <li><a href="form-wizard.html#tab2" data-toggle="tab">Contact</a></li>
-            <li><a href="form-wizard.html#tab3" data-toggle="tab">EULA</a></li>
-        </ul>
-    </div>
-    <!-- /tile widget -->
-
-    <!-- tile body -->
-    <div class="tile-body">
-
-        <div id="bar" class="progress progress-striped active">
-            <div class="progress-bar progress-bar-cyan animate-progress-bar"></div>
-        </div>
-
-        <div class="tab-content">
-
-            <div class="tab-pane" id="tab1">
-                <form class="form-horizontal form1" role="form" parsley-validate>
-
-                    <div class="form-group">
-                        <label for="fullname" class="col-sm-2 control-label">Full Name *</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="fullname" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password" class="col-sm-2 control-label">Password *</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password" parsley-trigger="change" parsley-required="true" parsley-minlength="6" parsley-type="alphanum" parsley-validation-minlength="1">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="passwordconfirm" class="col-sm-2 control-label">Password Confirm *</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="passwordconfirm" parsley-trigger="change" parsley-required="true" parsley-minlength="6" parsley-type="alphanum" parsley-validation-minlength="1" parsley-equalto="#password">
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-
-            <div class="tab-pane" id="tab2">
-
-                <form class="form-horizontal form2" role="form" parsley-validate id="contact">
-
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Email *</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-type="email" parsley-validation-minlength="1">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="website" class="col-sm-2 control-label">Website</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="website" parsley-trigger="change" parsley-minlength="4" parsley-type="url" parsley-validation-minlength="1">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phonenum" class="col-sm-2 control-label">Phone Number</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="phonenum" parsley-trigger="change" parsley-type="phone" parsley-validation-minlength="0" placeholder="1234567891">
-                        </div>
-                    </div>
-
-                </form>
-
-            </div>
-
-            <div class="tab-pane" id="tab3">
-
-                <form class="form-horizontal form3" role="form" parsley-validate id="eula">
-
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <div class="checkbox">
-                                <input type="checkbox" value="1" id="opt01" parsley-trigger="change" parsley-required="true" name="eula">
-                                <label for="opt01">EULA acceptation *</label>
-                            </div>
-                            <div class="checkbox">
-                                <input type="checkbox" value="1" id="opt02" name="newsletter">
-                                <label for="opt02">Receive newsletter</label>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-
-            </div>
-
-        </div>
+<div class="col-md-12" style="padding-left: 5px">
+    <div class="col-md-4">
+        Hosptal Number {{ Form::text('hosp_no','',array('class'=>'form-control col-sm-6','placeholder'=>'Hosptal Number','required'=>'required')) }}
 
     </div>
-    <!-- /tile body -->
-
-    <!-- tile footer -->
-    <div class="tile-footer border-top color white rounded-bottom-corners nopadding">
-        <ul class="pager pager-full wizard">
-            <li class="previous"><a href="javascript:;"><i class="fa fa-arrow-left fa-lg"></i></a></li>
-            <li class="next"><a href="javascript:;"><i class="fa fa-arrow-right fa-lg"></i></a></li>
-            <li class="next finish" style="display:none;"><a href="javascript:;"><i class="fa fa-check fa-lg"></i></a></li>
-        </ul>
+    <div class="col-md-4">
+        Phone Number {{ Form::text('phone','',array('class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
     </div>
-    <!-- /tile footer -->
+    <div class="col-md-4">
+        Facility<br>{{ Form::select('facility',Facility::all()->lists('facility_name','id'),'',array('class'=>'form-control','required'=>'requiered')) }}
 
+    </div>
 
+</div>
 
-
-</section>
-<!-- /tile -->
-
-Hosptal Number {{ Form::text('hosp_no','',array('class'=>'form-control col-sm-6','placeholder'=>'Hosptal Number','required'=>'required')) }}
-
-<div class="row">
+<div class="col-md-12">
     <div class="col-md-6" style="padding-left: 0px;padding-right: 5px">
         <h3 class="">Demographic</h3>
         <div class="panel panel-default">
@@ -171,31 +54,31 @@ Hosptal Number {{ Form::text('hosp_no','',array('class'=>'form-control col-sm-6'
     </div>
 
 </div>
-<div class="row">
+<div class="col-md-12">
     <h3>Contraceptive History</h3>
     @include('patient.contraceptive')
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <h3>Cervical Screening</h3>
     @include('patient.cervical_screening')
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <h3>HIV</h3>
     @include('patient.hiv')
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <h3>VIA</h3>
     @include('patient.via')
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <div class="col-md-6" style="padding-left: 0px;padding-right: 5px">
         <h3 class="">Colposcopy</h3>
         <div class="panel panel-default">
@@ -217,7 +100,7 @@ Hosptal Number {{ Form::text('hosp_no','',array('class'=>'form-control col-sm-6'
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <h3>Intervention</h3>
     @include('patient.intervention')
 

@@ -1,5 +1,4 @@
 
-<div class="col-md-12" style="padding-left: 5px;padding-right: 0px">
     <div class="panel panel-default">
         <div class="panel-body">
             <div class='form-group'>
@@ -15,7 +14,6 @@
         </div>
     </div>
 
-</div>
 
 <script>
     $(document).ready(function (){

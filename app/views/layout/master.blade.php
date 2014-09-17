@@ -4,7 +4,7 @@
 @else
 <html>
 <head>
-    <title>Minimal 1.3 - Blank Page</title>
+    <title>Cervical Cancer Prevention Program</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
 
@@ -39,7 +39,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="bg-1">
+<body class="solid-bg-5" style="margin-top: 50px">
 
 <!-- Preloader -->
 <div class="mask"><div id="loader"></div></div>
@@ -61,7 +61,19 @@
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top navbar-transparent-black mm-fixed-top" role="navigation" id="navbar">
 
-
+<div class="row">
+    <div class="col-md-2">
+        <img src="{{ asset('coat.jpg') }}" style="height: 50px; width: 50px">
+    </div>
+    <div class="col-md-8">
+        <h4 class="text-center">UNITED REPUBLIC OF TANZANIA - MINISTRY OF HEALTH AND SOCIAL WELFARE</h4>
+        <h4 class="text-center"style="margin-bottom: 0px;margin-top: 5px"><small style="color: #000000">
+                MBEYA REFERRAL HOSPITAL CERVICAL CANCER PREVENTION PROGRAM (CECAP)</small></h4>
+    </div>
+    <div class="col-md-2">
+        <img src="{{ asset('tz_flag.jpg') }}" style="height: 50px; width: 50px" class="pull-right">
+    </div>
+</div>
 
 <!-- Branding -->
 <div class="navbar-header col-md-2">
@@ -88,11 +100,6 @@
 </ul>
 <!-- /Page refresh -->
 
-<!-- Search -->
-<div class="search" id="main-search">
-    <i class="fa fa-search"></i> <input type="text" placeholder="Search...">
-</div>
-<!-- Search end -->
 
 <!-- Quick Actions -->
 <ul class="nav navbar-nav quick-actions">
@@ -228,6 +235,7 @@
     </a>
     <ul class="dropdown-menu">
         <li><a href="{{ url('reports') }}"><i class="fa fa-caret-right"></i> General Report</a></li>
+        <li><a href="{{ url('recordsreports') }}"><i class="fa fa-caret-right"></i> Records Report</a></li>
         <li><a href="{{ url('reports/contraceptive') }}"><i class="fa fa-caret-right"></i> Contraceptive History</a></li>
         <li><a href="{{ url('reports/hiv_status') }}"><i class="fa fa-caret-right"></i> HIV Status</a></li>
         <li><a href="{{ url('reports/colposcopy') }}"><i class="fa fa-caret-right"></i> Colposcopy</a></li>

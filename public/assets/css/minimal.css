@@ -5202,7 +5202,7 @@ menu .btn .fa {
 /**********************************/
 .navbar {
   min-height: 45px;
-  height: 45px;
+  height: 100px;
 }
 .navbar.navbar-default {
   border: 0;
@@ -5725,7 +5725,7 @@ menu .btn .fa {
 .navbar-nav.side-nav {
   width: 250px;
   position: fixed;
-  margin-top: 45px;
+  margin-top: 110px;
   padding-bottom: 0;
   top: 0;
   height: 100%;

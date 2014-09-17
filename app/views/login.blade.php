@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Minimal 1.3 - Login Page</title>
+    <title>Cervical Cancer Prevention Program</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
 
@@ -21,7 +21,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="bg-1">
+<body class="solid-bg-5">
 <!-- Wrap all page content here -->
 <div id="wrap">
     <!-- Make page fluid -->

@@ -32,11 +32,13 @@ class PatientController extends \BaseController {
 //		dd(Input::all());
         //adding patient basic info
         $patient = Patient::create(array(
-            "first_name"  => Input::get("firstname"),
+            "first_name"    => Input::get("firstname"),
             "middle_name"   => Input::get("middlename"),
             "last_name"     => Input::get("lastname"),
             "birth_date"    => Input::get("dob"),
-            "hospital_id"    => Input::get("hosp_no")
+            "hospital_id"   => Input::get("hosp_no"),
+            "phone"         => Input::get("phone"),
+            "facility_id"   => Input::get("facility"),
         ));
 
         //adding patient visit info
@@ -49,7 +51,7 @@ class PatientController extends \BaseController {
         PatientInfo::create(array(
             "patient_id"        => $patient->id,
             "visit_id"          => $visit->id,
-            "hospital_id"        => "somenumber",
+            "hospital_id"       => Input::get("hosp_no"),
             "region"            => Input::get("region"),
             "district"          => Input::get("district"),
             "ward"              => Input::get("ward"),
@@ -259,6 +261,13 @@ class PatientController extends \BaseController {
 
     public function store_followup($id){
         $patient = Patient::find($id);
+        $patient->first_name = Input::get("firstname");
+        $patient->middle_name = Input::get("middlename");
+        $patient->last_name = Input::get("lastname");
+        $patient->birth_date = Input::get("dob");
+        $patient->hospital_id = Input::get("hosp_no");
+        $patient->phone = Input::get("phone");
+        $patient->facility_id = Input::get("facility");
         //adding patient visit info
         $visit = Visit::create(array(
             "patient_id" => $patient->id,

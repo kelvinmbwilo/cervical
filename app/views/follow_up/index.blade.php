@@ -19,10 +19,22 @@
 @stop
 
 @section('contents')
-<h3><i class="fa fa-user-md"></i> Patient Follow Up<span class="pull-right">{{ $patient->first_name }} {{ $patient->middle_name }} {{ $patient->last_name }}</span> </h3>
 {{ Form::open(array("url"=>url("patient/follow_up/{$patient->id}"),"class"=>"form-horizontal","id"=>'FileUploader')) }}
-Hosptal Number {{ Form::text('hosp_no', $patient->hospital_id ,array('class'=>'form-control col-sm-6','placeholder'=>'Hosptal Number','required'=>'required')) }}
-<div class="row">
+<div class="col-md-12" style="padding-left: 0px">
+    <div class="col-md-4">
+        Hosptal Number {{ Form::text('hosp_no',$patient->hospital_id,array('class'=>'form-control col-sm-6','placeholder'=>'Hosptal Number','required'=>'required')) }}
+
+    </div>
+    <div class="col-md-4">
+        Phone Number {{ Form::text('phone','',array('class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
+    </div>
+    <div class="col-md-4">
+        Facility<br>{{ Form::select('facility',Facility::all()->lists('facility_name','id'),$patient->facility_id,array('class'=>'form-control','required'=>'requiered')) }}
+
+    </div>
+
+</div>
+<div class="col-md-12">
     <span class="help-block">**The pre filled values are values from last visit.</span>
     <div class="col-md-6" style="padding-left: 0px;padding-right: 5px">
         <h3 class="">Demographic</h3>
@@ -44,25 +56,25 @@ Hosptal Number {{ Form::text('hosp_no', $patient->hospital_id ,array('class'=>'f
     </div>
 
 </div>
-<div class="row">
+<div class="col-md-12">
     <h3>Contraceptive History</h3>
     @include('follow_up.contraceptive')
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <h3>HIV</h3>
     @include('follow_up.hiv')
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <h3>VIA</h3>
     @include('follow_up.via')
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <div class="col-md-6" style="padding-left: 0px;padding-right: 5px">
         <h3 class="">Colposcopy</h3>
         <div class="panel panel-default">
@@ -84,7 +96,7 @@ Hosptal Number {{ Form::text('hosp_no', $patient->hospital_id ,array('class'=>'f
 
 </div>
 
-<div class="row">
+<div class="col-md-12">
     <h3>Intervention</h3>
     @include('follow_up.intervention')
 
