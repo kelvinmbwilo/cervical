@@ -27,7 +27,7 @@
                         Phone Number<br>{{ Form::text('phone','',array('class'=>'form-control','placeholder'=>'Phone Number','required'=>'required')) }}
                     </div>
                     <div class='col-sm-6'>
-                        Role<br>{{ Form::select('role',array("admin"=>"Administrator","doctor"=>"Doctor"),'',array('class'=>'form-control','required'=>'requiered')) }}
+                        Role<br>{{ Form::select('role',array("admin"=>"Administrator","Region Focal Person"=>"Region Focal Person","District Focal Person"=>"District Focal Person","Hospital Focal Person"=>"Hospital Focal Person"),'',array('class'=>'form-control','required'=>'requiered')) }}
                     </div>
 
                 </div>

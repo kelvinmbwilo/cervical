@@ -103,6 +103,9 @@ Route::post('patient/delete/{id}',array('uses'=>'PatientController@destroy'));
 Route::get('reports',array('uses'=>'ReportController@index'));
 
 //displaying index page
+Route::post('reports/download',array('uses'=>'GeneralController@excelDownload'));
+
+//displaying index page
 Route::post('reports/process',array('uses'=>'ReportController@process'));
 
 

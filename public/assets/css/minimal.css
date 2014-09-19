@@ -5217,7 +5217,7 @@ menu .btn .fa {
   background-color: rgba(0, 0, 0, 0.1);
 }
 .navbar.navbar-transparent-black .navbar-header {
-  background-color: rgba(0, 0, 0, 0.05);
+  /*background-color: rgba(0, 0, 0, 0.05);*/
 }
 .navbar .navbar-header {
   width: 250px;
@@ -5228,12 +5228,13 @@ menu .btn .fa {
   font-weight: 300;
   font-size: 18px;
   font-family: "Roboto Condensed", sans-serif;
-  color: white;
+  /*color: #428BCA;*/
+    color: rgba(0, 0, 0, 0.6);
   padding: 0;
   padding-left: 20px;
   height: 45px;
   line-height: 45px;
-  background: url(../images/minimal-logo.png) no-repeat 0 16px;
+  /*background: url(../images/minimal-logo.png) no-repeat 0 16px;*/
 }
 .navbar .navbar-header .navbar-brand img {
   vertical-align: top;
@@ -5252,7 +5253,8 @@ menu .btn .fa {
   color: white;
 }
 .navbar .navbar-nav > li > a {
-  color: rgba(255, 255, 255, 0.7);
+  /*color: #428BCA;*/
+    color: rgba(0, 0, 0, 0.6);
   line-height: 45px;
   padding: 0 15px;
   -webkit-transition: all 0.2s linear;
@@ -5892,7 +5894,7 @@ menu .btn .fa {
 .navbar-nav.side-nav > li > a.sidebar-toggle {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 11px;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.9);
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -5923,8 +5925,9 @@ menu .btn .fa {
   -moz-transition: all 0.2s linear;
   transition: all 0.2s linear;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  /*color: #428BCA;*/
+  color: rgba(0, 0, 0, 0.6);
+  /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);*/
   width: 100%;
   position: relative;
   z-index: 2;
@@ -5942,7 +5945,7 @@ menu .btn .fa {
 .navbar-nav.side-nav > li.navigation .menu > li > .dropdown-menu .dropdown > a > b.dropdown-plus {
   float: right;
   line-height: 40px;
-  color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.6);
 }
 .navbar-nav.side-nav > li.navigation .menu > li > a:after,
 .navbar-nav.side-nav > li.navigation .menu > li > .dropdown-menu .dropdown > a:after {
@@ -6208,13 +6211,13 @@ menu .btn .fa {
 .navbar-nav.side-nav > li.summary .media .media-body {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  /*color: rgba(255, 255, 255, 0.5);*/
   text-transform: uppercase;
 }
 .navbar-nav.side-nav > li.summary .media .media-body h3 {
   font-family: "Roboto", "Arial", sans-serif;
   font-size: 22px;
-  color: rgba(255, 255, 255, 0.7);
+  /*color: rgba(255, 255, 255, 0.7);*/
   font-weight: 400;
 }
 .navbar-nav.side-nav > li.settings .form-group {
@@ -7515,7 +7518,7 @@ select.form-control.input-lg + .chosen-container .chosen-choices .search-field i
 [class^="tile"].color table > tbody > tr > th,
 [class^="tile"].color table > tfoot > tr > td,
 [class^="tile"].color table > tfoot > tr > th {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 0, 0, 0.6);
 }
 [class^="tile"].color table > thead > tr.active > td,
 [class^="tile"].color table > thead > tr.active > tr,
@@ -7780,11 +7783,11 @@ select.form-control.input-lg + .chosen-container .chosen-choices .search-field i
 }
 [class^="tile"].color table.table-custom > thead > tr > th,
 [class^="tile"].color table.table-custom > thead > tr > td {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.9);
 }
 [class^="tile"].color table.table-custom > thead > tr > th:after,
 [class^="tile"].color table.table-custom > thead > tr > td:after {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 [class^="tile"].color table.table-custom > thead > tr > th.sortable:hover, [class^="tile"].color table.table-custom > thead > tr > th.sorting:hover,
 [class^="tile"].color table.table-custom > thead > tr > td.sortable:hover,
@@ -7805,7 +7808,7 @@ select.form-control.input-lg + .chosen-container .chosen-choices .search-field i
 [class^="tile"].color table.table-custom > thead > tr > td.sorting_desc,
 [class^="tile"].color table.table-custom > thead > tr > td.sorting_asc:hover,
 [class^="tile"].color table.table-custom > thead > tr > td.sorting_desc:hover {
-  color: white;
+  color: #000000;
 }
 [class^="tile"].color table.table-custom > thead > tr > th.sort-asc:after, [class^="tile"].color table.table-custom > thead > tr > th.sort-desc:after, [class^="tile"].color table.table-custom > thead > tr > th.sort-asc:hover:after, [class^="tile"].color table.table-custom > thead > tr > th.sort-desc:hover:after, [class^="tile"].color table.table-custom > thead > tr > th.sorting_asc:after, [class^="tile"].color table.table-custom > thead > tr > th.sorting_desc:after, [class^="tile"].color table.table-custom > thead > tr > th.sorting_asc:hover:after, [class^="tile"].color table.table-custom > thead > tr > th.sorting_desc:hover:after,
 [class^="tile"].color table.table-custom > thead > tr > td.sort-asc:after,
@@ -7816,7 +7819,7 @@ select.form-control.input-lg + .chosen-container .chosen-choices .search-field i
 [class^="tile"].color table.table-custom > thead > tr > td.sorting_desc:after,
 [class^="tile"].color table.table-custom > thead > tr > td.sorting_asc:hover:after,
 [class^="tile"].color table.table-custom > thead > tr > td.sorting_desc:hover:after {
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 [class^="tile"].color table.table-custom > tbody > tr > th,
 [class^="tile"].color table.table-custom > tbody > tr > td {
@@ -7881,7 +7884,7 @@ select.form-control.input-lg + .chosen-container .chosen-choices .search-field i
 [class^="tile"].color .dataTables_wrapper .dataTables_info,
 [class^="tile"].color .dataTables_wrapper .dataTables_length,
 [class^="tile"].color .dataTables_wrapper .dataTables_filter {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.6)
 }
 [class^="tile"].color .dataTables_wrapper .table-datatable > tbody > tr > td.details,
 [class^="tile"].color .dataTables_wrapper .table-datatable > tbody > tr > th.details {
@@ -8071,10 +8074,10 @@ select.form-control.input-lg + .chosen-container .chosen-choices .search-field i
   font-size: 28px;
   display: inline-block;
   vertical-align: middle;
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   text-align: center;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid #428BCA;
   line-height: 44px;
 }
 .pageheader .breadcrumbs {
@@ -8111,11 +8114,14 @@ ol.breadcrumb {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   border-radius: 4px;
-  padding: 4px 15px;
+  padding: 10px 15px;
 }
 ol.breadcrumb > li {
   font-size: 12px;
   font-weight: 500;
+}
+ol.breadcrumb > li a {
+color: rgba(0, 0, 0, 0.6)
 }
 ol.breadcrumb > li + li:before {
   content: "\f105";

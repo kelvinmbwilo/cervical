@@ -39,7 +39,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="solid-bg-5"  style="margin-top: 50px">
+<body class="solid-bg-5"  style="margin-top: 50px;margin-bottom: 80px">
 
 <!-- Preloader -->
 <div class="mask"><div id="loader"></div></div>
@@ -62,14 +62,15 @@
 <div class="navbar navbar-default navbar-fixed-top navbar-transparent-black mm-fixed-top" role="navigation" id="navbar">
 
 <div class="row">
-    <div class="col-md-2">
-        <img src="{{ asset('coat.jpg') }}" style="height: 50px; width: 50px">
+    <div class="col-md-2 visible-lg visible-md hidden-sm hidden-xs" >
+        <img src="{{ asset('nembo.gif') }}" style="height: 50px; width: 50px">
     </div>
     <div class="col-md-8">
-        <h4 class="text-center">UNITED REPUBLIC OF TANZANIA</h4>
-        <h4 class="text-center"style="margin-bottom: 0px;margin-top: 5px"><small>CERVICAL CANCER PREVENTION PROGRAM</small></h4>
+        <h4 class="text-center">UNITED REPUBLIC OF TANZANIA - MINISTRY OF HEALTH AND SOCIAL WELFARE</h4>
+        <h4 class="text-center"style="margin-bottom: 0px;margin-top: 5px"><small style="color: #000000">
+                MBEYA REFERRAL HOSPITAL CERVICAL CANCER PREVENTION PROGRAM (CECAP)</small></h4>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 visible-lg visible-md hidden-sm hidden-xs">
         <img src="{{ asset('tz_flag.jpg') }}" style="height: 50px; width: 50px" class="pull-right">
     </div>
 </div>
@@ -81,7 +82,7 @@
     </a>
     <div class="sidebar-collapse">
         <a href="#">
-            <i class="fa fa-bars"></i>
+            <i class="fa fa-bars" style="color: rgba(0, 0, 0, 0.6);"></i>
         </a>
     </div>
 </div>
@@ -94,7 +95,7 @@
 <!-- Page refresh -->
 <ul class="nav navbar-nav refresh">
     <li class="divided">
-        <a href="#" class="page-refresh"><i class="fa fa-refresh"></i></a>
+        <a href="#" class="page-refresh"><i class="fa fa-refresh" style="color: rgba(0, 0, 0, 0.6);"></i></a>
     </li>
 </ul>
 <!-- /Page refresh -->
@@ -317,7 +318,7 @@
         <div class="row">
 
             <!-- col 12 -->
-            <div class="col-md-12">
+            <div class="col-md-12" style="padding-bottom: 50px">
                 @yield('contents')
             </div>
             <!-- /col 12 -->

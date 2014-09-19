@@ -171,7 +171,7 @@ $arrayy = array(
     <div class="col-md-2 btn btn-default" id="column"><img src="{{ asset('column.png') }}" style="height: 20px;width: 20px" /> Column</div>
 <!--    <div class="col-md-2 btn btn-default" id="pie"><img src="{{ asset('pie.png') }}" style="height: 20px;width: 20px" /> Pie</div>-->
     <div class="col-md-2 btn btn-default" id="combined"><img src="{{ asset('combined.jpg') }}" style="height: 20px;width: 20px" /> Combined</div>
-    <div class="col-md-2 btn btn-default" id="pie"><img src="{{ asset('cvs.jpg') }}" style="height: 20px;width: 20px" /> Excel</div>
+    <div class="col-md-2 btn btn-default" id="excel"><img src="{{ asset('cvs.jpg') }}" style="height: 20px;width: 20px" /> Excel</div>
 </div>
 <div id="chartarea" class="col-xs-12" style="margin-top: 10px">
 <script>
@@ -278,6 +278,18 @@ $arrayy = array(
             $("#chartarea").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Loading...</span><h3>");
             $("#formms").ajaxSubmit({
                 url:"<?php echo url('report/general/combined') ?>",
+                target: '#chartarea',
+                data: {chat:'table'},
+                success:  afterSuccess
+            });
+        });
+
+        $("#excel").unbind("click").click(function(){
+            $(".btn").removeClass("btn-info")
+            $(this).addClass("btn-info")
+            $("#chartarea").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Loading...</span><h3>");
+            $("#formms").ajaxSubmit({
+                url:"<?php echo url('reports/download') ?>",
                 target: '#chartarea',
                 data: {chat:'table'},
                 success:  afterSuccess

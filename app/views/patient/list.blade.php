@@ -19,7 +19,7 @@ $patient = Patient::all();
 ?>
 
 <div class="tile-body color blue rounded-corners">
-    <a href="{{ url('patient/register') }}" class="btn btn-primary btn-xs add" id="add">New Registration <i class="fa fa-plus"></i> </a>
+    <div class="row"> <a href="{{ url('patient/register') }}" class="btn btn-primary btn-xs add pull-right" id="add">New Registration <i class="fa fa-plus"></i> </a></div>
     <div class="table-responsive">
         <table  class="table table-datatable table-custom" id="advancedDataTable">
             <thead>
