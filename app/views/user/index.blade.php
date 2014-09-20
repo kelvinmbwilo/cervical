@@ -1,10 +1,7 @@
 @extends("layout.master")
 
 @section('title')
-Users
-@stop
-@section('subtitle')
-User management
+User Management
 @stop
 @section('breadcumbs')
 <li>

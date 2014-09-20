@@ -49,6 +49,9 @@ class UserController extends \BaseController {
                     "email"=>Input::get("email"),
                     "role"=>Input::get("role"),
                     "password"=>Input::get("password"),
+                    "region"=>(Input::has('region'))?Input::get("region"):0,
+                    "district"=>(Input::has('district'))?Input::get("district"):0,
+                    "facility"=>(Input::has('facility'))?Input::get("facility"):0,
                     "status"=>"active"
                 ));
                 $name = $user->firstname." ".$user->middlename." ".$user->lastname;
@@ -97,12 +100,15 @@ class UserController extends \BaseController {
     public function update($id)
     {
         $user = User::find($id);
-        $user->firstname = Input::get("firstname");
-        $user->lastname = Input::get("lastname");
+        $user->firstname  = Input::get("firstname");
+        $user->lastname   = Input::get("lastname");
         $user->middlename = Input::get("middlename");
-        $user->role = Input::get("role");
-        $user->email = Input::get("email");
-        $user->phone = Input::get("phone");
+        $user->role       = Input::get("role");
+        $user->email      = Input::get("email");
+        $user->phone      = Input::get("phone");
+        $user->region     =(Input::has('region'))?Input::get("region"):0;
+        $user->district   =(Input::has('district'))?Input::get("district"):0;
+        $user->facility   =(Input::has('facility'))?Input::get("facility"):0;
         $user->save();
         $name = $user->firstname." ".$user->middlename." ".$user->lastname;
         Logs::create(array(
@@ -168,4 +174,16 @@ class UserController extends \BaseController {
         Auth::logout();
         return Redirect::to("/");
     }
+
+    /**
+     * displaying user profile
+     *
+     * @return view
+     */
+    public function profile(){
+        $user = Auth::user();
+        return View::make('user.profile',compact('user'));
+    }
+
+
 }

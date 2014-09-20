@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono|Roboto:400,100,300,500,700,300italic|Roboto+Condensed:300,400,700|Roboto+Slab:400,700&subset=latin,latin-ext);
+@import url(css.css);
 /************************************/
 /************* CALENDAR *************/
 /************************************/
@@ -5931,7 +5931,7 @@ menu .btn .fa {
   width: 100%;
   position: relative;
   z-index: 2;
-  font-weight: 700;
+  font-weight: 400;
 }
 .navbar-nav.side-nav > li.navigation .menu > li > a > i,
 .navbar-nav.side-nav > li.navigation .menu > li > .dropdown-menu .dropdown > a > i {
@@ -6210,9 +6210,10 @@ menu .btn .fa {
 }
 .navbar-nav.side-nav > li.summary .media .media-body {
   font-family: "Roboto Condensed", sans-serif;
+    font-weight: 300;
   font-size: 12px;
-  /*color: rgba(255, 255, 255, 0.5);*/
-  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+  /*text-transform: uppercase;*/
 }
 .navbar-nav.side-nav > li.summary .media .media-body h3 {
   font-family: "Roboto", "Arial", sans-serif;
@@ -11556,7 +11557,7 @@ a.submit:hover {
   text-transform: uppercase;
   font-weight: 400;
   border-bottom: 0;
-  color: rgba(113, 113, 113, 0.7);
+  /*color: rgba(113, 113, 113, 0.7);*/
   position: relative;
   padding-left: 0;
   padding-bottom: 0;

@@ -30,6 +30,7 @@ $patient = Patient::all();
                 <th> Age </th>
                 <th> Region </th>
                 <th> District </th>
+                <th> Facility </th>
                 <th>Last Visit</th>
                 <th> Action </th>
             </tr>
@@ -44,6 +45,7 @@ $patient = Patient::all();
                 <td>{{ date('Y')-date('Y',strtotime($us->birth_date)) }} Yrs</td>
                 <td>{{ $us->info()->orderBy('created_at','DESC')->first()->regions->region }}</td>
                 <td>{{ $us->info()->orderBy('created_at','DESC')->first()->districts->district }}</td>
+                <td>{{ Facility::find($us->facility_id)->facility_name }}</td>
                 <td>{{ date('j M Y',strtotime($us->visit()->orderBy('created_at','DESC')->first()->visit_date)) }}</td>
                 <td id="{{ $us->id }}">
                     <a href='{{ url("patient/follow_up/{$us->id}") }}' title="View Staff log" class="userlog"><i class="fa fa-mail-forward text-success"></i> Follow Up</a>&nbsp;&nbsp;&nbsp;

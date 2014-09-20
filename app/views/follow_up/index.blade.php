@@ -19,6 +19,11 @@
 @stop
 
 @section('contents')
+<style>
+    .panel{
+        margin-bottom: 10px;
+    }
+</style>
 {{ Form::open(array("url"=>url("patient/follow_up/{$patient->id}"),"class"=>"form-horizontal","id"=>'FileUploader')) }}
 <div class="col-md-12" style="padding-left: 0px">
     <div class="col-md-4">
@@ -103,12 +108,20 @@
 </div>
 <div id="output"></div>
 <div class='col-sm-12 form-group text-center'>
-    {{ Form::submit('Submit',array('class'=>'btn btn-primary','id'=>'submitqn')) }}
+    <div class="col-sm-5"><input type="text" placeholder="Next Visit On" class="form-control" id="next_visit"></div>
+    <div class="col-sm-5">{{ Form::submit('Submit',array('class'=>'btn btn-primary','id'=>'submitqn')) }}</div>
 </div>
 {{ Form::close() }}
 
 <script>
     $(document).ready(function (){
+        $("#next_visit").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            minDate:+1,
+            dateFormat:"yy-mm-dd"
+        });
+
 //        $('#FileUploader').on('submit', function(e) {
 //            e.preventDefault();
 //            $("#output").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Making changes please wait...</span><h3>");

@@ -171,7 +171,7 @@
     <li class="divider"></li>
 
     <li>
-        <a href="#"><i class="fa fa-user"></i> Profile</a>
+        <a href="{{ url('user/profile') }}"><i class="fa fa-user"></i> Profile</a>
     </li>
 
 
@@ -206,7 +206,6 @@
             <li>
                 <a href="{{ url('home') }}">
                     <i class="fa fa-tachometer"></i> Dashboard
-                    <span class="badge badge-red">1</span>
                 </a>
             </li>
 
@@ -244,6 +243,7 @@
                 </ul>
             </li>
 
+            @if(Auth::user()->role == "admin")
             <li>
                 <a href="{{ url('facilities') }}">
                     <i class="fa fa-building"></i> Facilities
@@ -254,6 +254,7 @@
                     <i class="fa fa-user"></i> Users
                 </a>
             </li>
+            @endif
 
 
 

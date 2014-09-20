@@ -11,6 +11,7 @@
                 <th class="sort-alpha">Email</th>
                 <th class="sort-amount">Phone</th>
                 <th class="sort-amount">Role</th>
+                <th class="sort-amount">Station</th>
                 <th >Action</th>
             </tr>
             </thead>
@@ -23,10 +24,23 @@
                 <td>{{ $us->email }}</td>
                 <td>{{ $us->phone }}</td>
                 <td>{{ $us->role }}</td>
+                <td>
+                @if($us->role == "Region Focal Person")
+                    @if(Region::find($us->region)){{ Region::find($us->region)->region }}@endif
+                @elseif($us->role == "District Focal Person")
+                    @if(District::find($us->district)){{ District::find($us->district)->district }}@endif
+                @elseif($us->role == "Hospital Focal Person")
+                    @if(Facility::find($us->facility)){{ Facility::find($us->facility)->facility_name }}@endif
+                @elseif($us->role == "admin")
+                    Administrator
+                @endif
+                </td>
                 <td id="{{ $us->id }}">
                     <a href="#log" title="View Staff log" class="userlog"><i class="fa fa-list text-success"></i> log</a>&nbsp;&nbsp;&nbsp;
                     <a href="#edit" title="edit User" class="edituser"><i class="fa fa-pencil text-info"></i> edit</a>&nbsp;&nbsp;&nbsp;
-                    <a href="#b" title="delete User" class="deleteuser"><i class="fa fa-trash-o text-danger"></i> </a>
+                    @if($us->id != Auth::user()->id)
+                    <a href="#b" title="delete User" class="deleteuser"><i class="fa fa-trash-o text-danger"></i> delete</a>
+                    @endif
                 </td>
             </tr>
             @endforeach

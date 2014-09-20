@@ -12,6 +12,19 @@ class PatientController extends \BaseController {
 		return View::make('patient.list');
 	}
 
+
+/**
+	 * Display a listing of the resource.
+	 *
+ * @param int $id
+	 * @return Response
+	 */
+	public function facilityPatient($id)
+	{
+        $patients = Patient::where("facility_id",$id)->get();
+		return View::make('patient.list_by_facility',compact('patients','id'));
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -162,7 +175,8 @@ class PatientController extends \BaseController {
             "partners_partner"          => Input::get("partner_sexual_partner"),
             "contraceptive_status"      => Input::get("current_on_contra"),
             "contraceptive_type"        => (Input::has("current_contra"))?Input::get("current_contra"):"",
-            "HIV_status"                =>(Input::has("hiv_status"))?Input::get("hiv_status"):"",
+            "HIV_status"                => (Input::has("hiv_status"))?Input::get("hiv_status"):"",
+            "facility_id"               => Input::get("facility"),
         ));
         if(Input::has("current_cd4")){
             $report->cd4_count = Input::get("current_cd4");

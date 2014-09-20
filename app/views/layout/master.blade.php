@@ -35,8 +35,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <script src="{{ asset('html5shiv.js')}}"></script>
+      <script src="{{ asset('respond.min.js')}}"></script>
     <![endif]-->
 </head>
 <body class="solid-bg-5" style="margin-top: 60px;margin-bottom: 80px">
@@ -172,7 +172,7 @@
         <li class="divider"></li>
 
         <li>
-            <a href="#"><i class="fa fa-user"></i> Profile</a>
+            <a href="{{ url('user/profile') }}"><i class="fa fa-user"></i> Profile</a>
         </li>
 
 
@@ -207,7 +207,6 @@
 <li>
     <a href="{{ url('home') }}">
         <i class="fa fa-tachometer"></i> Dashboard
-        <span class="badge badge-red">1</span>
     </a>
 </li>
 
@@ -244,7 +243,7 @@
         <li><a href="#"><i class="fa fa-caret-right"></i> View Saved Reports</a></li>
     </ul>
 </li>
-
+@if(Auth::user()->role == "admin")
 <li>
     <a href="{{ url('facilities') }}">
         <i class="fa fa-building"></i> Facilities
@@ -255,7 +254,7 @@
         <i class="fa fa-user"></i> Users
     </a>
 </li>
-
+@endif
 
 
 </ul>
@@ -321,7 +320,7 @@
     <div class="pageheader">
 
 
-        <h2 style="margin-top: 10px; font-size: 20px; color: rgba(0, 0, 0, 0.6);">
+        <h2 style="margin-top: 10px; font-size: 15px; color: rgba(0, 0, 0, 0.6);">
             @yield('title') <span>@yield('subtitle')</span>
         </h2>
 

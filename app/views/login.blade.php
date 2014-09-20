@@ -55,7 +55,7 @@
                             <input name="keep" type="checkbox" value="cheked" id="remember" checked>
                             <label for="remember">Remember me</label>
                         </div>
-                        <a href="login.html#">Forget password?</a>
+                        <a href="{{ url('password/remind/') }}">Forget password?</a>
                     </section>
                     <section class="log-in">
                         <button class="btn btn-greensea">Log In</button>

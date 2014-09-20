@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::controller('password', 'RemindersController');
 
 Route::get('/', function()
 {
@@ -59,6 +60,9 @@ Route::post('user/delete/{id}',array('as'=>'deleteuser', 'uses'=>'UserController
 //display a system usage log for a user
 Route::get('user/log/{id}',array('as'=>'userlog', 'uses'=>'UserController@show'));
 
+//display a user profile plus editing option
+Route::get('user/profile',array('as'=>'userprofile', 'uses'=>'UserController@profile'));
+
 /**
  * patient registration routes
  * working with patientController
@@ -67,6 +71,9 @@ Route::get('user/log/{id}',array('as'=>'userlog', 'uses'=>'UserController@show')
 
 //display a patient list
 Route::get('patients',array('uses'=>'PatientController@index'));
+
+//display a patient list
+Route::get('listpatient/{id}',array('uses'=>'PatientController@facilityPatient'));
 
 //display a form to register new user
 Route::get('patient/register',array('uses'=>'PatientController@create'));

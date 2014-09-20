@@ -2,12 +2,9 @@
 
 
 @section('title')
-Facilities
-@stop
-
-@section('subtitle')
 Facilities Management
 @stop
+
 
 @section('breadcumbs')
 <li>
@@ -24,5 +21,4 @@ Facilities Management
         @include('facilities.list')
     </div>
 </div>
-
 @stop

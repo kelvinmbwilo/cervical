@@ -2,7 +2,7 @@
 
 <div class='form-group'>
     <div class='col-sm-6'>
-        Pap smea done?<br>{{ Form::select('pap_status',array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control','required'=>'requiered')) }}
+        Pap smear done?<br>{{ Form::select('pap_status',array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control','required'=>'requiered')) }}
     </div>
     <div class='col-sm-6'>
         <span id="papsmeares">what was the results<br>{{ Form::select('pap_result',PapsmearResult::all()->lists('name','id'),'',array('class'=>'form-control')) }}</span>

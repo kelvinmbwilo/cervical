@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
         {{ Form::open(array("url"=>url("facilities/edit/{$facility->id}"),"class"=>"form-horizontal","id"=>'FileUploader')) }}
-        <h3 class="text-center text-muted">Update User Information</h3>
+
         <div class='form-group'>
             <div class='col-sm-9'>
                 Facility Name <br>  {{ Form::text('firstname',$facility->facility_name,array('class'=>'form-control','placeholder'=>'Facility name','required'=>'required')) }}

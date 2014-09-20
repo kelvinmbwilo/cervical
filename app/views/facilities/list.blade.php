@@ -69,7 +69,7 @@
                     modal+= '<div class="modal-content">';
                     modal+= '<div class="modal-header">';
                     modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>';
-                    modal+= '<h3 class="modal-title" id="modalDialogLabel"><strong>Update User </strong>  Information</h3>';
+                    modal+= '<h3 class="modal-title" id="modalDialogLabel"><strong>Update Facility </strong>  Information</h3>';
                     modal+= '</div>';
                     modal+= '<div class="modal-body">';
                     modal+= ' </div>';
@@ -92,7 +92,7 @@
                     modal+= '<div class="modal-content">';
                     modal+= '<div class="modal-header">';
                     modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>';
-                    modal+= '<h3 class="modal-title" id="modalDialogLabel">Add New User </h3>';
+                    modal+= '<h3 class="modal-title" id="modalDialogLabel">Add New Facility </h3>';
                     modal+= '</div>';
                     modal+= '<div class="modal-body">';
                     modal+= ' </div>';
@@ -116,7 +116,7 @@
                     modal+= '<div class="modal-content">';
                     modal+= '<div class="modal-header">';
                     modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>';
-                    modal+= '<h3 class="modal-title" id="modalDialogLabel"><strong>Update User </strong>  Information</h3>';
+                    modal+= '<h3 class="modal-title" id="modalDialogLabel"><strong>Update Facility </strong>  Information</h3>';
                     modal+= '</div>';
                     modal+= '<div class="modal-body">';
                     modal+= ' </div>';

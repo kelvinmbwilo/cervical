@@ -2,7 +2,6 @@
     <div class="panel panel-default">
       <div class="panel-body">
          {{ Form::open(array("url"=>url('facilities/add'),"class"=>"form-horizontal","id"=>'FileUploader')) }}
-         <h2 class="text-center text-muted">Add new facility</h2>
           <div class='form-group'>
                 <div class='col-sm-9'>
                     Facility Name <br>  {{ Form::text('firstname','',array('class'=>'form-control','placeholder'=>'Facility name','required'=>'required')) }}
