@@ -35,8 +35,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="{{ asset('html5shiv.js')}}"></script>
+    <script src="{{ asset('respond.min.js')}}"></script>
     <![endif]-->
 </head>
 <body class="solid-bg-5"  style="margin-top: 50px;margin-bottom: 80px">
@@ -353,7 +353,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/bootstrap/bootstrap-dropdown-multilevel.js') }}"></script>
-<script src="{{ asset('assets/js/run_prettify.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/vendor/mmenu/js/jquery.mmenu.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/vendor/sparkline/jquery.sparkline.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/vendor/nicescroll/jquery.nicescroll.min.js') }}"></script>

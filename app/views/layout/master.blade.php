@@ -386,7 +386,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/bootstrap/bootstrap-dropdown-multilevel.js') }}"></script>
-<script src="{{ asset('assets/js/run_prettify.js') }}"></script>
+<!--<script src="{{ asset('assets/js/run_prettify.js') }}"></script>-->
 <script type="text/javascript" src="{{ asset('assets/js/vendor/mmenu/js/jquery.mmenu.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/vendor/sparkline/jquery.sparkline.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/vendor/nicescroll/jquery.nicescroll.min.js') }}"></script>
