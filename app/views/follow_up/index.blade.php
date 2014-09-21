@@ -31,7 +31,7 @@
 
     </div>
     <div class="col-md-4">
-        Phone Number {{ Form::text("pattern"=>"\d+",'maxlength'=>'10','phone',$patient->phone,array('class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
+        Phone Number {{ Form::text('phone',$patient->phone,array("pattern"=>"\d+",'maxlength'=>'10','class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
     </div>
     <div class="col-md-4">
         Facility<br>{{ Form::select('facility',Facility::all()->lists('facility_name','id'),$patient->facility_id,array('class'=>'form-control','required'=>'requiered')) }}

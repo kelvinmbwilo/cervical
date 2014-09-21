@@ -68,12 +68,7 @@
             "oTableTools": {
                 "sSwfPath": "assets/js/vendor/datatables/tabletools/swf/copy_csv_xls_pdf.swf",
                 "aButtons": [
-                    "print",
-                    {
-                        "sExtends":    "collection",
-                        "sButtonText": 'Save <span class="caret" />',
-                        "aButtons":    [ "csv", "xls", "pdf" ]
-                    }
+                    "print"
                 ]
             },
             "fnDrawCallback": function( oSettings ) {

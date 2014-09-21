@@ -159,98 +159,95 @@
 <!-- /Quick Actions -->
 
 
+    <!-- Sidebar -->
+    <ul class="nav navbar-nav side-nav" id="sidebar">
 
-<!-- Sidebar -->
-<ul class="nav navbar-nav side-nav" id="sidebar">
+        <li class="collapsed-content">
+            <ul>
+                <li class="search"><!-- Collapsed search pasting here at 768px --></li>
+            </ul>
+        </li>
 
-    <li class="collapsed-content">
-        <ul>
-            <li class="search"><!-- Collapsed search pasting here at 768px --></li>
-        </ul>
-    </li>
+        <li class="navigation" id="navigation">
+            <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i class="fa fa-angle-up"></i></a>
 
-    <li class="navigation" id="navigation">
-        <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i class="fa fa-angle-up"></i></a>
+            <ul class="menu">
 
-        <ul class="menu">
+                <li>
+                    <a href="{{ url('home') }}">
+                        <i class="fa fa-tachometer"></i> Dashboard
+                    </a>
+                </li>
 
-            <li>
-                <a href="{{ url('home') }}">
-                    <i class="fa fa-tachometer"></i> Dashboard
-                </a>
-            </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user-md"></i> Patients <b class="fa fa-plus dropdown-plus"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ url('patient/register') }}">
+                                <i class="fa fa-caret-right"></i> New Registration
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('patients') }}">
+                                <i class="fa fa-caret-right"></i> Follow Up
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-user-md"></i> Patients <b class="fa fa-plus dropdown-plus"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="{{ url('patient/register') }}">
-                            <i class="fa fa-caret-right"></i> New Registration
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('patients') }}">
-                            <i class="fa fa-caret-right"></i> Follow Up
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bar-chart"></i> Reports <b class="fa fa-plus dropdown-plus"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{ url('reports') }}"><i class="fa fa-caret-right"></i> General Report</a></li>
-                    <li><a href="{{ url('report/saved') }}"><i class="fa fa-caret-right"></i> View Saved Reports</a></li>
-                </ul>
-            </li>
-
-            @if(Auth::user()->role == "admin")
-            <li>
-                <a href="{{ url('facilities') }}">
-                    <i class="fa fa-building"></i> Facilities
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('users') }}">
-                    <i class="fa fa-user"></i> Users
-                </a>
-            </li>
-            @endif
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bar-chart"></i> Reports <b class="fa fa-plus dropdown-plus"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url('reports') }}"><i class="fa fa-caret-right"></i> General Report</a></li>
+                        <li><a href="{{ url('report/saved') }}"><i class="fa fa-caret-right"></i> View Saved Reports</a></li>
+                    </ul>
+                </li>
+                @if(Auth::user()->role == "admin")
+                <li>
+                    <a href="{{ url('facilities') }}">
+                        <i class="fa fa-building"></i> Facilities
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('users') }}">
+                        <i class="fa fa-user"></i> Users
+                    </a>
+                </li>
+                @endif
 
 
+            </ul>
 
-        </ul>
+        </li>
 
-    </li>
+        <li class="summary" id="order-summary">
+            <a href="#" class="sidebar-toggle underline" data-toggle="#order-summary">Patient Summary <i class="fa fa-angle-up"></i></a>
 
-    <li class="summary" id="order-summary">
-        <a href="#" class="sidebar-toggle underline" data-toggle="#order-summary">Patient Summary <i class="fa fa-angle-up"></i></a>
+            <div class="media">
 
-        <div class="media">
-
-            <div class="media-body">
-                Registered Patients
-                <h3 class="media-heading">{{ Patient::all()->count() }}</h3>
+                <div class="media-body">
+                    Registered Patients
+                    <h3 class="media-heading">{{ Patient::all()->count() }}</h3>
+                </div>
             </div>
-        </div>
 
-        <div class="media">
+            <div class="media">
 
-            <div class="media-body">
-                Total Visits
-                <h3 class="media-heading">{{ Visit::all()->count() }} </h3>
+                <div class="media-body">
+                    Total Visits
+                    <h3 class="media-heading">{{ Visit::all()->count() }} </h3>
+                </div>
             </div>
-        </div>
 
-    </li>
+        </li>
 
 
-</ul>
-<!-- Sidebar end -->
+    </ul>
+    <!-- Sidebar end -->
 
 
 

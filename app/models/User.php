@@ -27,4 +27,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function logs(){
         return $this::hasMany("Logs","user_id","id");
     }
+
+    public function getregion(){
+        return $this->belongsTo('Region', 'region', 'id');
+    }
+
+    public function getdistrict(){
+        return $this->belongsTo('District', 'district', 'id');
+    }
+
+    public function getfacility(){
+        return $this->belongsTo('Facility', 'facility', 'id');
+    }
+
 }

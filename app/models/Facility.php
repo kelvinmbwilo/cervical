@@ -16,11 +16,11 @@ class Facility extends Eloquent {
 
     protected  $guarded = array('id');
 
-    public function region(){
+    public function getregion(){
         return $this->belongsTo('Region', 'region', 'id');
     }
 
-    public function district(){
+    public function getdistrict(){
         return $this->belongsTo('District', 'district', 'id');
     }
 

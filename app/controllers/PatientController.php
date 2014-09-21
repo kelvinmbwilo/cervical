@@ -9,6 +9,7 @@ class PatientController extends \BaseController {
 	 */
 	public function index()
 	{
+
 		return View::make('patient.list');
 	}
 
@@ -188,7 +189,7 @@ class PatientController extends \BaseController {
         if(Input::get("next_visit") != ""){
             Notification::create(array(
                 "patient_id"=>$patient->id,
-                "message"=>"Kumbuka Kwenda kwenye kituo Ulichotibiwa mara ya mwisho tarehe ".Input::get('next_visit')." Kwaajili ya kufuatilia hali yako ya afya",
+                "message"=>"Kumbuka Kwenda katika kituo ulichopimwa mara ya mwisho saratani ya shingo ya kizazi. Tafadhali fika bila kukosa tarehe  ".Input::get('next_visit'),
                 "status"=>"pending",
                 "phone_number"=>$patient->phone,
                 "next_visit"=>Input::get('next_visit'),
@@ -421,7 +422,7 @@ class PatientController extends \BaseController {
         if(Input::get("next_visit") != ""){
             Notification::create(array(
                 "patient_id"=>$patient->id,
-                "message"=>"Kumbuka Kwenda kwenye kituo Ulichotibiwa mara ya mwisho tarehe ".Input::get('next_visit')." Kwaajili ya kufuatilia hali yako ya afya",
+                "message"=>"Kumbuka Kwenda katika kituo ulichopimwa mara ya mwisho saratani ya shingo ya kizazi. Tafadhali fika bila kukosa tarehe  ".Input::get('next_visit'),
                 "status"=>"pending",
                 "phone_number"=>$patient->phone,
                 "next_visit"=>Input::get('next_visit'),

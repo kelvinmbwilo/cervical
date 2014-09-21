@@ -213,6 +213,11 @@
         <li><a href="{{ url('report/saved') }}"><i class="fa fa-caret-right"></i> View Saved Reports</a></li>
     </ul>
 </li>
+<li>
+    <a href="{{ url('reminders') }}">
+        <i class="fa fa-building"></i> Reminders
+    </a>
+</li>
 @if(Auth::user()->role == "admin")
 <li>
     <a href="{{ url('facilities') }}">

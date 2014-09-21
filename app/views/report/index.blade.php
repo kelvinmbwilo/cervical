@@ -83,7 +83,6 @@ $arrayy = array(
 </div>
 <div class="col-xs-12">
 <!--<button type="button" class="btn btn-info btn-sm pull-left" style="margin: 5px" id="toggleadv">Advanced Filters</button>-->
-<button type="button" class="btn btn-info btn-sm pull-right" style="margin: 5px" id="savechat">Save Report</button>
 </div>
 <div class="advancefilters">
 
@@ -172,7 +171,7 @@ $arrayy = array(
     <div style="margin: 10px" class="col-md-1 btn btn-default btn-sm" id="combined"><img src="{{ asset('combined.jpg') }}" style="height: 20px;width: 20px" /> Combined</div>
     <button name="records" style="margin: 10px" type="submit" class="col-md-1 btn btn-default btn-sm"><img src="{{ asset('cvs.jpg') }}" style="height: 20px;width: 20px" /> Records</button>
     <button name='reports' style="margin: 10px" type="submit" class="col-md-1 btn btn-default btn-sm"><img src="{{ asset('cvs.jpg') }}" style="height: 20px;width: 20px" /> Reports</button>
-
+    <button type="button" class="btn btn-info btn-sm pull-right" style="margin: 5px" id="savechat">Save Report</button>
     {{ Form::close() }}
 </div>
 <div id="chartarea" class="col-xs-12" style="margin-top: 10px">

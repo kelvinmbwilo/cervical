@@ -20,5 +20,10 @@ class District extends Eloquent {
         return $this->belongsTo('Region', 'region_id', 'id');
     }
 
+    public function facilities(){
+        return $this->hasMany('Facility', 'district', 'id');
+    }
+
+
 
 }

@@ -21,6 +21,15 @@ Route::get('home', function()
 {
     return View::make('patient.list');
 });
+Route::get('reminders', function()
+{
+    return View::make('dashboard.reminder');
+});
+Route::post('reminder/delete/{id}', function($id)
+{
+    $not = Notification::find($id);
+    $not->delete();
+});
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

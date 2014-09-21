@@ -15,7 +15,6 @@ Patients
 @section('contents')
 <?php
 $patient = Patient::all();
-
 ?>
 
 <div class="tile-body color blue rounded-corners">
@@ -37,7 +36,7 @@ $patient = Patient::all();
             </thead>
             <tbody>
             <?php $i=1; ?>
-            @foreach(Patient::all() as $us)
+            @foreach($patient as $us)
             <tr>
                 <td>{{ $i++ }}</td>
                 <td>{{ $us->hospital_id }}</td>
@@ -78,12 +77,7 @@ $patient = Patient::all();
             "oTableTools": {
                 "sSwfPath": "assets/js/vendor/datatables/tabletools/swf/copy_csv_xls_pdf.swf",
                 "aButtons": [
-                    "print",
-                    {
-                        "sExtends":    "collection",
-                        "sButtonText": 'Save <span class="caret" />',
-                        "aButtons":    [ "csv", "xls", "pdf" ]
-                    }
+                    "print"
                 ]
             },
             "fnDrawCallback": function( oSettings ) {
