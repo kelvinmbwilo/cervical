@@ -16,4 +16,11 @@ class PatientReport extends Eloquent {
 
     protected  $guarded = array('id');
 
+    public function regions(){
+        return $this->belongsTo('Region', 'region', 'id');
+    }
+
+    public function districts(){
+        return $this->belongsTo('District', 'district', 'id');
+    }
 }

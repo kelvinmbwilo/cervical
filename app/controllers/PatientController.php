@@ -184,6 +184,21 @@ class PatientController extends \BaseController {
             $report->cd4_count = Input::has("prev_cd4");
         }
         $report->save();
+
+        if(Input::get("next_visit") != ""){
+            Notification::create(array(
+                "patient_id"=>$patient->id,
+                "message"=>"Kumbuka Kwenda kwenye kituo Ulichotibiwa mara ya mwisho tarehe ".Input::get('next_visit')." Kwaajili ya kufuatilia hali yako ya afya",
+                "status"=>"pending",
+                "phone_number"=>$patient->phone,
+                "next_visit"=>Input::get('next_visit'),
+            ));
+        }
+
+        Logs::create(array(
+            "user_id"=>  Auth::user()->id,
+            "action"  =>"Patient followup for ".$patient->first_name." ".$patient->last_name
+        ));
         $msg = "Patient Added Successfull";
         return View::make("patient.index",compact("msg"));
 	}
@@ -402,7 +417,29 @@ class PatientController extends \BaseController {
             $report->cd4_count = Input::has("prev_cd4");
         }
         $report->save();
-         $msg = "Patient followup stored successfull";
+
+        if(Input::get("next_visit") != ""){
+            Notification::create(array(
+                "patient_id"=>$patient->id,
+                "message"=>"Kumbuka Kwenda kwenye kituo Ulichotibiwa mara ya mwisho tarehe ".Input::get('next_visit')." Kwaajili ya kufuatilia hali yako ya afya",
+                "status"=>"pending",
+                "phone_number"=>$patient->phone,
+                "next_visit"=>Input::get('next_visit'),
+            ));
+        }
+
+        Logs::create(array(
+            "user_id"=>  Auth::user()->id,
+            "action"  =>"Patient followup for ".$patient->first_name." ".$patient->last_name
+        ));
+        $msg = "Patient followup stored successfull";
         return View::make('visit.index',compact('patient',"msg"));
+    }
+
+    public function sendsms(){
+
+        foreach(Notification::where('status','peding')->get() as $send){
+
+        }
     }
 }

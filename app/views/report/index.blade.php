@@ -14,7 +14,7 @@ Reports
 
 @section('contents')
 <h4>Specific Indicators</h4>
-{{ Form::open(array("url"=>url("reports/process/"),"class"=>"form-horizontal","id"=>'formms')) }}
+{{ Form::open(array("url"=>url("reports/download"),"class"=>"form-horizontal","id"=>'formms')) }}
 <div class='form-group' style="margin-bottom: 5px">
 
     <div class='col-sm-3'>
@@ -27,10 +27,10 @@ Reports
         Marital Status<br>{{ Form::select('marital',array('all'=>"All","Married"=>"Married","Cohabit"=>"Cohabit","Single-never married"=>"Single-never married","Widowed"=>"Widowed","Separated/Divorced"=>"Separated/Divorced"),'',array('class'=>'form-control','required'=>'requiered')) }}
     </div>
     <div class='col-sm-2'>
-        From:{{ Form::text('from','',array('class'=>'form-control','placeholder'=>'Start Date','required'=>'required','id'=>'from')) }}
+        From:{{ Form::text('from','',array('class'=>'form-control','placeholder'=>'Start Date','id'=>'from')) }}
     </div>
     <div class='col-sm-2'>
-        To:{{ Form::text('to','',array('class'=>'form-control','placeholder'=>'End Date','required'=>'required','id'=>'to')) }}
+        To:{{ Form::text('to','',array('class'=>'form-control','placeholder'=>'End Date','id'=>'to')) }}
     </div>
 </div>
 <div class='form-group'>
@@ -70,7 +70,7 @@ $arrayy = array(
         Year <br>{{ Form::select('year',array_combine(range(date('Y'),1970), range(date('Y'),1970)),date('Y'),array('class'=>'form-control')) }}
     </div>
     <div class='col-sm-4 age'>
-        Age Range <br>{{ Form::select('age',array_combine(range(3,10), range(3,10)),'',array('class'=>'form-control')) }}
+        Age Range <br>{{ Form::select('age',array_combine(range(3,10), range(3,10)),'5',array('class'=>'form-control')) }}
     </div>
     <div class='col-sm-4 years'>
         <div class='col-sm-6'>
@@ -82,8 +82,8 @@ $arrayy = array(
     </div>
 </div>
 <div class="col-xs-12">
-<button type="button" class="btn btn-info btn-sm pull-left" style="margin: 5px" id="toggleadv">Advanced Filters</button>
-<button type="button" class="btn btn-info btn-sm pull-right" style="margin: 5px" id="">Save Report</button>
+<!--<button type="button" class="btn btn-info btn-sm pull-left" style="margin: 5px" id="toggleadv">Advanced Filters</button>-->
+<button type="button" class="btn btn-info btn-sm pull-right" style="margin: 5px" id="savechat">Save Report</button>
 </div>
 <div class="advancefilters">
 
@@ -91,27 +91,27 @@ $arrayy = array(
     <h4>Gynecological History</h4>
     <div class='form-group'>
         <div class='col-sm-3'>
-            Parity <br>{{ Form::select('parity',array_combine(range(1,15), range(1,15)),'',array('class'=>'form-control','required'=>'requiered')) }}
+            Parity <br>{{ Form::select('parity',array('all'=>'all')+array_combine(range(1,15), range(1,15)),'',array('class'=>'form-control','required'=>'requiered')) }}
         </div>
         <div class='col-sm-3'>
-            Total Number of Pregnancy<br> {{ Form::select('number_of_preg',array_combine(range(1,50), range(1,50)),'',array('class'=>'form-control','required'=>'requiered')) }}
+            Total Number of Pregnancy<br> {{ Form::select('number_of_preg',array('all'=>'all')+array_combine(range(1,50), range(1,50)),'',array('class'=>'form-control','required'=>'requiered')) }}
         </div>
         <div class='col-sm-3'>
-            Menarche (Years) <br> {{ Form::select('menarche',array_merge(array('Not Applicable'=>'Not Applicable'),array_combine(range(1,100), range(1,100))),'',array('class'=>'form-control','required'=>'requiered')) }}
+            Menarche (Years) <br> {{ Form::select('menarche',array('all'=>'all')+array('Not Applicable'=>'Not Applicable')+array_combine(range(1,100), range(1,100)),'',array('class'=>'form-control','required'=>'requiered')) }}
         </div>
         <div class='col-sm-3'>
-            Age At sexual Debut (years) <br> {{ Form::select('start_sex_age',array_merge(array('Not Applicable'=>'Not Applicable'),array_combine(range(1,100), range(1,100))),'',array('class'=>'form-control','required'=>'requiered')) }}
+            Age At sexual Debut (years) <br> {{ Form::select('start_sex_age',array('all'=>'all')+array('Not Applicable'=>'Not Applicable')+array_combine(range(1,100), range(1,100)),'',array('class'=>'form-control','required'=>'requiered')) }}
         </div>
     </div>
     <div class='form-group'>
         <div class='col-sm-3'>
-            Age At first Marriage<br>{{ Form::select('first_marriage',array_merge(array('Not Applicable'=>'Not Applicable'),array_combine(range(1,100), range(1,100))),'',array('class'=>'form-control','required'=>'requiered')) }}
+            Age At first Marriage<br>{{ Form::select('first_marriage',array('all'=>'all')+array('Not Applicable'=>'Not Applicable')+array_combine(range(1,100), range(1,100)),'',array('class'=>'form-control','required'=>'requiered')) }}
         </div>
         <div class='col-sm-3'>
-            Number of sexual partners<br>{{ Form::select('sexual_partner',array_combine(range(1,100), range(1,100)),'',array('class'=>'form-control','required'=>'requiered')) }}
+            Number of sexual partners<br>{{ Form::select('sexual_partner',array('all'=>'all')+array_combine(range(1,100), range(1,100)),'',array('class'=>'form-control','required'=>'requiered')) }}
         </div>
         <div class='col-sm-3'>
-            Number of your partner's sexual partners<br> {{ Form::select('partner_sexual_partner',array_combine(range(1,100), range(1,100)),'',array('class'=>'form-control','required'=>'requiered')) }}
+            Number of your partner's sexual partners<br> {{ Form::select('partner_sexual_partner',array('all'=>'all')+array_combine(range(1,100), range(1,100)),'',array('class'=>'form-control','required'=>'requiered')) }}
         </div>
     </div>
 
@@ -122,7 +122,7 @@ $arrayy = array(
             contraceptive History<br>{{ Form::select('ever_used_contra',array('all'=>'All Patients','ever'=>'Patient Found Using Contraceptive Before Visit','during'=>'Patient Found Using Contraceptive At time of Visit'),'',array('class'=>'form-control','required'=>'requiered')) }}
         </div>
         <div class='col-sm-6'>
-            <span id="prevcontralist">Type Of Contraceptive<br>{{ Form::select('ever_contra',ContraceptiveResult::all()->lists('name','id'),'',array('class'=>'form-control')) }}</span>
+            <span id="prevcontralist">Type Of Contraceptive<br>{{ Form::select('ever_contra',array('all'=>'all')+ContraceptiveResult::all()->lists('name','id'),'',array('class'=>'form-control')) }}</span>
         </div>
     </div>
 
@@ -140,7 +140,7 @@ $arrayy = array(
             <span id="ptic_agree">ART status<br> {{ Form::select('art_status',array('all'=>'all','using'=>'On ART', 'not using'=>'Not Using ART'),'',array('class'=>'form-control')) }}</span>
         </div>
         <div class='col-sm-3'>
-            <span id="cd4_stat"> CD4 (cells/mm3) <br> {{ Form::select('cd4_stat',array_combine(range(0,1500), range(0,1500)),'500',array('class'=>'form-control')) }}</span>
+            <span id="cd4_stat"> CD4 (cells/mm3) <br> {{ Form::select('cd4_stat',array('all'=>'all')+array_combine(range(0,1500), range(0,1500)),'',array('class'=>'form-control')) }}</span>
         </div>
     </div>
 
@@ -149,29 +149,31 @@ $arrayy = array(
     <div class='form-group'>
 
         <div class='col-sm-3'>
-            VIA Counselling done?<br>{{ Form::select('via_counceling',array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control')) }}
+            VIA Counselling done?<br>{{ Form::select('via_counceling',array('all'=>'all')+array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control')) }}
         </div>
         <div class='col-sm-3'>
-            VIA test done<br>{{ Form::select('via_test',array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control')) }}
+            VIA test done<br>{{ Form::select('via_test',array('all'=>'all')+array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control')) }}
         </div>
         <div class='col-sm-3'>
-            why (List reasons)<br> {{ Form::select('via_reason',array('SCJ not seen'=>'SCJ not seen','Heavy menses'=>'Heavy menses','Suspicious of cancer'=>'Suspicious of cancer','Massive endocervical discharge (cervicitis)'=>'Massive endocervical discharge (cervicitis)','pregnancy'=>'pregnancy'),'',array('class'=>'form-control')) }}
+            why (List reasons)<br> {{ Form::select('via_reason',array('all'=>'all')+array('SCJ not seen'=>'SCJ not seen','Heavy menses'=>'Heavy menses','Suspicious of cancer'=>'Suspicious of cancer','Massive endocervical discharge (cervicitis)'=>'Massive endocervical discharge (cervicitis)','pregnancy'=>'pregnancy'),'',array('class'=>'form-control')) }}
         </div>
         <div class='col-sm-3'>
-            what is the test results<br> {{ Form::select('via_results',array('Normal cervix (Negative)'=>'Normal cervix (Negative)','Abnormal cervix (Positive)'=>'Abnormal cervix (Positive)'),'',array('class'=>'form-control')) }}
+            what is the test results<br> {{ Form::select('via_results',array('all'=>'all')+array('Normal cervix (Negative)'=>'Normal cervix (Negative)','Abnormal cervix (Positive)'=>'Abnormal cervix (Positive)'),'',array('class'=>'form-control')) }}
         </div>
     </div>
 
 </div>
-{{ Form::close() }}
 <div class="col-xs-12" style="margin-top: 5px">
-    <div class="col-md-2 btn btn-default" id="table"><img src="{{ asset('table.png') }}" style="height: 20px;width: 20px" /> Table</div>
-    <div class="col-md-2 btn btn-default" id="bar"><img src="{{ asset('bar.png') }}" style="height: 20px;width: 20px" /> Bar</div>
-    <div class="col-md-2 btn btn-default" id="line"><img src="{{ asset('line.png') }}" style="height: 20px;width: 20px" /> Line</div>
-    <div class="col-md-2 btn btn-default" id="column"><img src="{{ asset('column.png') }}" style="height: 20px;width: 20px" /> Column</div>
-<!--    <div class="col-md-2 btn btn-default" id="pie"><img src="{{ asset('pie.png') }}" style="height: 20px;width: 20px" /> Pie</div>-->
-    <div class="col-md-2 btn btn-default" id="combined"><img src="{{ asset('combined.jpg') }}" style="height: 20px;width: 20px" /> Combined</div>
-    <div class="col-md-2 btn btn-default" id="excel"><img src="{{ asset('cvs.jpg') }}" style="height: 20px;width: 20px" /> Excel</div>
+    <div style="margin: 10px;margin-left: 0px" class="col-md-1 btn btn-default btn-sm" id="records"><img src="{{ asset('table.png') }}" style="height: 20px;width: 20px" /> Records</div>
+    <div style="margin: 10px" class="col-md-1 btn btn-default btn-sm" id="table"><img src="{{ asset('table.png') }}" style="height: 20px;width: 20px" /> Table</div>
+    <div style="margin: 10px" class="col-md-1 btn btn-default btn-sm" id="bar"><img src="{{ asset('bar.png') }}" style="height: 20px;width: 20px" /> Bar</div>
+    <div style="margin: 10px" class="col-md-1 btn btn-default btn-sm" id="line"><img src="{{ asset('line.png') }}" style="height: 20px;width: 20px" /> Line</div>
+    <div style="margin: 10px" class="col-md-1 btn btn-default btn-sm" id="column"><img src="{{ asset('column.png') }}" style="height: 20px;width: 20px" /> Column</div>
+    <div style="margin: 10px" class="col-md-1 btn btn-default btn-sm" id="combined"><img src="{{ asset('combined.jpg') }}" style="height: 20px;width: 20px" /> Combined</div>
+    <button name="records" style="margin: 10px" type="submit" class="col-md-1 btn btn-default btn-sm"><img src="{{ asset('cvs.jpg') }}" style="height: 20px;width: 20px" /> Records</button>
+    <button name='reports' style="margin: 10px" type="submit" class="col-md-1 btn btn-default btn-sm"><img src="{{ asset('cvs.jpg') }}" style="height: 20px;width: 20px" /> Reports</button>
+
+    {{ Form::close() }}
 </div>
 <div id="chartarea" class="col-xs-12" style="margin-top: 10px">
 <script>
@@ -284,6 +286,18 @@ $arrayy = array(
             });
         });
 
+        $("#records").unbind("click").click(function(){
+            $(".btn").removeClass("btn-info")
+            $(this).addClass("btn-info")
+            $("#chartarea").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Loading...</span><h3>");
+            $("#formms").ajaxSubmit({
+                url:"<?php echo url('report/general/records') ?>",
+                target: '#chartarea',
+                data: {chat:'table'},
+                success:  afterSuccess
+            });
+        });
+
         $("#excel").unbind("click").click(function(){
             $(".btn").removeClass("btn-info")
             $(this).addClass("btn-info")
@@ -318,6 +332,51 @@ $arrayy = array(
                 data: {chat:'table'},
                 success:  afterSuccess
             });
+        });
+
+        //saving a chart
+        $("#savechat").click(function(){
+            var id = $(this).attr("id");
+            var modal = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
+            modal+= '<div class="modal-dialog">';
+            modal+= '<div class="modal-content">';
+            modal+= '<div class="modal-header">';
+            modal+= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+            modal+= '<h4 class="modal-title" id="myModalLabel">Save Report Variables</h4>';
+            modal+= '</div>';
+            modal+= '<div class="modal-body">';
+            modal+='Name Of Report<input type="text" name="report"  required="" class="form-control">';
+            modal+='<div id="outpp" ></div>';
+            modal+= ' </div>';
+            modal+= '<div class="modal-footer">';
+            modal+= '<button type="button" class="btn btn-primary" id="submitreport">Save</button> ';
+            modal+= '</div>';
+            modal+= '</div>';
+            modal+= '</div>';
+
+            $("body").append(modal);
+            $("#myModal").modal("show");
+            $("#submitreport").click(function(){
+                if($("input[name=report]").val() == ""){
+                    $("input[name=report]").attr("placeholder","Write Name First").focus();
+                }else{
+                    $("#outpp").html("<h3><i class='fa fa-spin fa-spinner '></i><span>Saving Report...</span><h3>");
+                    $("#formms").ajaxSubmit({
+                        url:"<?php echo url('report/save') ?>",
+                        target: '#outpp',
+                        data: {name:$("input[name=report]").val()},
+                        success:  function(){
+                            $("#outpp").html("<h3><i class='fa fa-check text-success'></i><span>Report Saved</span><h3>");
+                            setTimeout(function() {
+                                $("#myModal").modal("hide");
+                            }, 2000);
+                        }
+                    });
+                }
+            })
+            $("#myModal").on('hidden.bs.modal',function(){
+                $("#myModal").remove();
+            })
         });
     });
 

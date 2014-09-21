@@ -31,7 +31,7 @@
 
     </div>
     <div class="col-md-4">
-        Phone Number {{ Form::text('phone',$patient->phone,array('class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
+        Phone Number {{ Form::text("pattern"=>"\d+",'maxlength'=>'10','phone',$patient->phone,array('class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
     </div>
     <div class="col-md-4">
         Facility<br>{{ Form::select('facility',Facility::all()->lists('facility_name','id'),$patient->facility_id,array('class'=>'form-control','required'=>'requiered')) }}
@@ -108,7 +108,7 @@
 </div>
 <div id="output"></div>
 <div class='col-sm-12 form-group text-center'>
-    <div class="col-sm-5"><input type="text" placeholder="Next Visit On" class="form-control" id="next_visit"></div>
+    <div class="col-sm-5"><input type="text" placeholder="Next Visit On" class="form-control" id="next_visit" name="next_visit"></div>
     <div class="col-sm-5">{{ Form::submit('Submit',array('class'=>'btn btn-primary','id'=>'submitqn')) }}</div>
 </div>
 {{ Form::close() }}

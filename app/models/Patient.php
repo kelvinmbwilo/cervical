@@ -19,6 +19,9 @@ class Patient extends Eloquent {
     public function visit(){
         return $this->hasMany('Visit', 'patient_id', 'id');
     }
+    public function report(){
+        return $this->belongsTo('PatientReport', 'id', 'patient_id');
+    }
 
     public function info(){
         return $this->hasMany('PatientInfo', 'patient_id', 'id');

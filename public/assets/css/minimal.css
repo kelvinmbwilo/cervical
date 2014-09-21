@@ -6022,7 +6022,7 @@ menu .btn .fa {
 .navbar-nav.side-nav > li.navigation .menu > li.dropdown.open > a,
 .navbar-nav.side-nav > li.navigation .menu > li > .dropdown-menu .dropdown.dropdown.open > a {
   text-decoration: none;
-  color: white;
+  color: rgba(0,0,0,0.6);
   background-color: transparent;
 }
 .navbar-nav.side-nav > li.navigation .menu > li.dropdown.open > a b.dropdown-plus,
@@ -6069,7 +6069,7 @@ menu .btn .fa {
   -moz-transition: all 0.2s linear;
   transition: all 0.2s linear;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.6);
   width: 100%;
   -webkit-transition: none;
   -moz-transition: none;

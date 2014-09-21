@@ -105,37 +105,13 @@
 <ul class="nav navbar-nav quick-actions">
 
 
-<!--<li class="dropdown divided">-->
-<!---->
-<!--    <a class="dropdown-toggle button" data-toggle="dropdown" href="#">-->
-<!--        <i class="fa fa-bell"></i>-->
-<!--        <span class="label label-transparent-black">3</span>-->
-<!--    </a>-->
-<!---->
-<!--    <ul class="dropdown-menu wide arrow nopadding bordered">-->
-<!--        <li><h1>You have <strong>3</strong> new notifications</h1></li>-->
-<!---->
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <span class="label label-green"><i class="fa fa-user"></i></span>-->
-<!--                New user registered.-->
-<!--                <span class="small">18 mins</span>-->
-<!--            </a>-->
-<!--        </li>-->
-<!---->
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <span class="label label-red"><i class="fa fa-power-off"></i></span>-->
-<!--                Server down.-->
-<!--                <span class="small">27 mins</span>-->
-<!--            </a>-->
-<!--        </li>-->
-<!---->
-<!--       -->
-<!---->
-<!--    </ul>-->
-<!---->
-<!--</li>-->
+<li class="dropdown divided">
+
+    @include('layout.notification')
+
+ </ul>
+
+</li>
 
 <li class="dropdown divided user" id="current-user">
     <div class="profile-photo">
@@ -234,13 +210,7 @@
     </a>
     <ul class="dropdown-menu">
         <li><a href="{{ url('reports') }}"><i class="fa fa-caret-right"></i> General Report</a></li>
-        <li><a href="{{ url('recordsreports') }}"><i class="fa fa-caret-right"></i> Records Report</a></li>
-        <li><a href="{{ url('reports/contraceptive') }}"><i class="fa fa-caret-right"></i> Contraceptive History</a></li>
-        <li><a href="{{ url('reports/hiv_status') }}"><i class="fa fa-caret-right"></i> HIV Status</a></li>
-        <li><a href="{{ url('reports/colposcopy') }}"><i class="fa fa-caret-right"></i> Colposcopy</a></li>
-        <li><a href="{{ url('reports/pap_smear') }}"><i class="fa fa-caret-right"></i> Pap Smear</a></li>
-        <li><a href="{{ url('reports/via') }}"><i class="fa fa-caret-right"></i> VIA</a></li>
-        <li><a href="#"><i class="fa fa-caret-right"></i> View Saved Reports</a></li>
+        <li><a href="{{ url('report/saved') }}"><i class="fa fa-caret-right"></i> View Saved Reports</a></li>
     </ul>
 </li>
 @if(Auth::user()->role == "admin")
@@ -412,9 +382,11 @@
 
 <script>
     $(function(){
-
+        setInterval(function(){
+            $.post("<?php echo asset('sendsms.php') ?>",function(data){
+            });
+        }, 301000)
     })
-
 </script>
 </body>
 </html>

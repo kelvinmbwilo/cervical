@@ -35,7 +35,7 @@ Patient Registration
 
     </div>
     <div class="col-md-4">
-        Phone Number {{ Form::text('phone','',array('class'=>'form-control col-sm-6','placeholder'=>'Phone Number','required'=>'required')) }}
+        Phone Number {{ Form::text('phone','',array("pattern"=>"\d+",'maxlength'=>'10','class'=>'form-control col-sm-6','placeholder'=>'Phone Number(0717656637)','required'=>'required')) }}
     </div>
     <div class="col-md-4">
         Facility<br>{{ Form::select('facility',Facility::all()->lists('facility_name','id'),'',array('class'=>'form-control','required'=>'requiered')) }}
@@ -118,7 +118,7 @@ Patient Registration
 </div>
 <div id="output"></div>
 <div class='col-sm-12 form-group text-center'>
-    <div class="col-sm-5"><input type="text" placeholder="Next Visit On" class="form-control" id="next_visit"></div>
+    <div class="col-sm-5"><input type="text" placeholder="Next Visit On" class="form-control" id="next_visit" name="next_visit"></div>
     <div class="col-sm-7">
     {{ Form::submit('Register',array('class'=>'btn btn-primary','id'=>'submitqn')) }}
     {{ Form::reset('Reset',array('class'=>'btn btn-warning','id'=>'submitqn')) }}

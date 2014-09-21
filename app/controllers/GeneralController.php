@@ -13,10 +13,28 @@ class GeneralController extends \BaseController {
     }
 
     public function processQuery($patientquery,$visitquery){
-        $quer = parent::processRegion($patientquery,$visitquery,Input::get('region'),"");
-        $query = parent::processDistrict($quer[0],$quer[1],Input::get('district'),$quer[2]);
-        $query1 = parent::processMarital($query[0],$query[1],Input::get('marital'),$query[2]);
+        $quer   =  parent::processRegion($patientquery,$visitquery,Input::get('region'),"");
+        $query  =  parent::processDistrict($quer[0],$quer[1],Input::get('district'),$quer[2]);
+        $query1 =  parent::processMarital($query[0], $query[1],Input::get('marital'),$query[2]);
+//        $query2 =  parent::processHivStatus($query1[0], $query1[1],Input::get('marital'),$query1[2]);
+//        $query3 =  parent::processHivTest($query2[0], $query2[1],Input::get('marital'),$query2[2]);
+//        $query4 =  parent::processHivCd4Count($query3[0], $query3[1],Input::get('marital'),$query3[2]);
+//        $query5 =  parent::processHivDeclineTest($query4[0], $query4[1],Input::get('marital'),$query4[2]);
+//        $query6 =  parent::processHivTestResult($query5[0], $query5[1],Input::get('marital'),$query5[2]);
+//        $query7 =  parent::processHivDeclineTest($query6[0], $query6[1],Input::get('marital'),$query6[2]);
+//        $query8 =  parent::processMarital($query7[0], $query7[1],Input::get('marital'),$query7[2]);
+//        $query9 =  parent::processMarital($query8[0], $query8[1],Input::get('marital'),$query8[2]);
+//        $query10 = parent::processMarital($query9[0],$query9[1],Input::get('marital'),$query9[2]);
+//        $query11 = parent::processMarital($query10[0],$query10[1],Input::get('marital'),$query10[2]);
+//        $query12 = parent::processMarital($query11[0],$query11[1],Input::get('marital'),$query11[2]);
+//        $query13 = parent::processMarital($query12[0],$query12[1],Input::get('marital'),$query12[2]);
+//        $query14 = parent::processMarital($query13[0],$query13[1],Input::get('marital'),$query13[2]);
+//        $query15 = parent::processMarital($query14[0],$query14[1],Input::get('marital'),$query14[2]);
+//        $query16 = parent::processMarital($query15[0],$query15[1],Input::get('marital'),$query15[2]);
+//        $query17 = parent::processMarital($query16[0],$query16[1],Input::get('marital'),$query16[2]);
+//        $query18 = parent::processMarital($query17[0],$query17[1],Input::get('marital'),$query17[2]);
         $query2 = parent::processDaterange($query1[0],$query1[1],$query1[2]);
+
 
         return $query2;
     }
@@ -32,7 +50,7 @@ class GeneralController extends \BaseController {
             $columntype = array('Unknown'=>'Unknown','Negative'=>'Negative','Positive'=>'Positive');
         }
         if($value == "CD4 Count"){
-            $columntype = array('0'=>'0-200','200'=>'200-400','400'=>'400-600','600'=>'600-1000','1000'=>'1000-1500');
+            $columntype = array('0-200'=>'0-200','200-400'=>'200-400','400-600'=>'400-600','600-1000'=>'600-1000','1000-1500'=>'1000-1500');
         }
         if($value == "HIV Test  Results"){
             $columntype = array('test'=>'Tests','Positive'=>'Positive','Negative'=>'Negative');
@@ -237,10 +255,11 @@ class GeneralController extends \BaseController {
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
-            if((parent::maxAge()%Input::get('age')) == 0){
+            $agetouse = (Input::get('age')==0)?3:Input::get('age');
+            if((parent::maxAge()%$agetouse) == 0){
                 $limit = parent::maxAge();
             } else{
-                $limit = (parent::maxAge()-(parent::maxAge()%Input::get('age')))+Input::get('age');
+                $limit = (parent::maxAge()-(parent::maxAge()%$agetouse))+$agetouse;
             }
             //making a loop for values
             //year iterator
@@ -268,7 +287,7 @@ class GeneralController extends \BaseController {
                         $patientquery = DB::table('patient');
                         $visitquery   = DB::table('visit');
                         $query = $this->processQuery($patientquery,$visitquery);
-                        $que = $this->checkCondition($query,$pat,$key1)->whereBetween('birth_date',array($end,$start));
+                        $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                         $column[$value1][] = $que->count();
                     }
                     $title = Input::get('vertical')." Age Range ". $query[2];
@@ -375,10 +394,11 @@ class GeneralController extends \BaseController {
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
-            if((parent::maxAge()%Input::get('age')) == 0){
+            $agetouse = (Input::get('age')==0)?3:Input::get('age');
+            if((parent::maxAge()%$agetouse) == 0){
                 $limit = parent::maxAge();
             } else{
-                $limit = (parent::maxAge()-(parent::maxAge()%Input::get('age')))+Input::get('age');
+                $limit = (parent::maxAge()-(parent::maxAge()%$agetouse))+$agetouse;
             }
             //making a loop for values
             $k = 0;
@@ -411,7 +431,7 @@ class GeneralController extends \BaseController {
                         $patientquery = DB::table('patient');
                         $visitquery   = DB::table('visit');
                         $query = $this->processQuery($patientquery,$visitquery);
-                        $que = $this->checkCondition($query,$pat,$key1)->whereBetween('birth_date',array($end,$start));
+                        $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                         $column .= ($i < $limit)?$que->count().",":$que->count();
                         $k=$i;
                     }
@@ -538,10 +558,11 @@ class GeneralController extends \BaseController {
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
-            if((parent::maxAge()%Input::get('age')) == 0){
+            $agetouse = (Input::get('age')==0)?3:Input::get('age');
+            if((parent::maxAge()%$agetouse) == 0){
                 $limit = parent::maxAge();
             } else{
-                $limit = (parent::maxAge()-(parent::maxAge()%Input::get('age')))+Input::get('age');
+                $limit = (parent::maxAge()-(parent::maxAge()%$agetouse))+$agetouse;
             }
             //making a loop for values
             $k = 0;
@@ -574,7 +595,7 @@ class GeneralController extends \BaseController {
                         $patientquery = DB::table('patient');
                         $visitquery   = DB::table('visit');
                         $query = $this->processQuery($patientquery,$visitquery);
-                        $que = $this->checkCondition($query,$pat,$key1)->whereBetween('birth_date',array($end,$start));
+                        $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                         $column .= ($i < $limit)?$que->count().",":$que->count();
                         $k=$i;
                     }
@@ -708,10 +729,11 @@ class GeneralController extends \BaseController {
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
-            if((parent::maxAge()%Input::get('age')) == 0){
+            $agetouse = (Input::get('age')==0)?3:Input::get('age');
+            if((parent::maxAge()%$agetouse) == 0){
                 $limit = parent::maxAge();
             } else{
-                $limit = (parent::maxAge()-(parent::maxAge()%Input::get('age')))+Input::get('age');
+                $limit = (parent::maxAge()-(parent::maxAge()%$agetouse))+$agetouse;
             }
             //making a loop for values
             $k = 0;
@@ -745,7 +767,7 @@ class GeneralController extends \BaseController {
                         $patientquery = DB::table('patient');
                         $visitquery   = DB::table('visit');
                         $query = $this->processQuery($patientquery,$visitquery);
-                        $que = $this->checkCondition($query,$pat,$key1)->whereBetween('birth_date',array($end,$start));
+                        $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                         $column .= ($i < $limit)?$que->count().",":$que->count();
                         $column1 .= ($i < $limit)?$que->count().",":$que->count();
                         $k=$i;
@@ -872,10 +894,11 @@ class GeneralController extends \BaseController {
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
-            if((parent::maxAge()%Input::get('age')) == 0){
+            $agetouse = (Input::get('age')==0)?3:Input::get('age');
+            if((parent::maxAge()%$agetouse) == 0){
                 $limit = parent::maxAge();
             } else{
-                $limit = (parent::maxAge()-(parent::maxAge()%Input::get('age')))+Input::get('age');
+                $limit = (parent::maxAge()-(parent::maxAge()%$agetouse))+$agetouse;
             }
             //making a loop for values
             $k = 0;
@@ -908,7 +931,7 @@ class GeneralController extends \BaseController {
                         $patientquery = DB::table('patient');
                         $visitquery   = DB::table('visit');
                         $query = $this->processQuery($patientquery,$visitquery);
-                        $que = $this->checkCondition($query,$pat,$key1)->whereBetween('birth_date',array($end,$start));
+                        $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                         $column .= ($i < $limit)?$que->count().",":$que->count();
                         $k=$i;
                     }
@@ -958,6 +981,166 @@ class GeneralController extends \BaseController {
 
     }
 
+    public function makeRecord(){
+        $title = "";$pat = false;
+        $usequery = "";
+        if(Input::get("horizontal") == "Year"){
+
+            $from = Input::get('year')."-01-01";
+            $to = Input::get('year')."-12-31";
+            $patientquery = DB::table('patient');
+            $visitquery   = DB::table('visit');
+            $query = $this->processQuery($patientquery,$visitquery);
+            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $usequery=$query[0]->whereBetween('created_at',array($from,$to))->get();
+        }
+        elseif(Input::get("horizontal") == "Years"){
+
+            $from = Input::get('start')."-01-01";
+            $to = Input::get('end')."-12-31";
+            $patientquery = DB::table('patient');
+            $visitquery   = DB::table('visit');
+            $query = $this->processQuery($patientquery,$visitquery);
+            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $usequery=$query[0]->whereBetween('created_at',array($from,$to))->get();
+        }
+        elseif(Input::get("horizontal") == "Age Range"){
+
+            $patientquery = DB::table('patient');
+            $visitquery   = DB::table('visit');
+            $query = $this->processQuery($patientquery,$visitquery);
+            $usequery=$query[0]->get();
+            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+
+        }
+        ?>
+        <div class="tile-body color blue rounded-corners">
+     <h4><?php echo $title ?></h4>
+    <div class="table-responsive">
+        <table  class="table table-datatable table-custom" id="advancedDataTable">
+            <thead>
+            <tr>
+                <th> # </th>
+                <th> Hosptal_id </th>
+                <th> Name       </th>
+                <th> Age        </th>
+                <th> Region     </th>
+                <th> District   </th>
+                <th> Facility   </th>
+                <th> HIV Status   </th>
+                <th> Marital Status   </th>
+                <th> Contraceptive Status   </th>
+                <th> Last Visit </th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php $i=1;
+            if(count($usequery) > 1){
+            foreach($usequery as $us){
+                $patient = Patient::find($us->id);
+              ?>
+            <tr>
+                <td><?php echo $i++ ?></td>
+                <td><?php echo $us->hospital_id ?></td>
+                <td style="text-transform: capitalize"><?php echo $us->first_name ?> <?php echo $us->middle_name ?> <?php echo $us->last_name ?></td>
+                <td><?php echo date('Y')-date('Y',strtotime($us->birth_date)) ?> Yrs</td>
+                <td><?php echo $patient->report->regions->region;  ?></td>
+                <td><?php echo $patient->report->districts->district ?></td>
+                <td><?php echo Facility::find($us->facility_id)->facility_name ?></td>
+                <td><?php echo $patient->report->HIV_status ?></td>
+                <td><?php echo $patient->report->marital_status ?></td>
+                <td><?php echo $patient->report->contraceptive_status ?></td>
+                <td><?php echo date('j M Y',strtotime($patient->visit()->orderBy('created_at','DESC')->first()->visit_date)) ?></td>
+            </tr>
+           <?php }
+            }?>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<!--script to process the list of users-->
+<script>
+    /* Table initialisation */
+    $(document).ready(function() {
+
+        var oTable04 = $('#advancedDataTable').dataTable({
+            "sDom":
+                "<'row'<'col-md-4'l><'col-md-4 text-center sm-left'T C><'col-md-4'f>r>"+
+                    "t"+
+                    "<'row'<'col-md-4 sm-center'i><'col-md-4'><'col-md-4 text-right sm-center'p>>",
+            "oLanguage": {
+                "sSearch": ""
+            },
+            "oTableTools": {
+                "sSwfPath": "assets/js/vendor/datatables/tabletools/swf/copy_csv_xls_pdf.swf",
+                "aButtons": [
+                    "print",
+                    {
+                        "sExtends":    "collection",
+                        "sButtonText": 'Save <span class="caret" />',
+                        "aButtons":    [ "csv", "xls", "pdf" ]
+                    }
+                ]
+            },
+            "fnDrawCallback": function( oSettings ) {
+                $(".deleteuser").click(function(){
+                    var id1 = $(this).parent().attr('id');
+                    $(".deleteuser").show("slow").parent().parent().find("span").remove();
+                    var btn = $(this).parent().parent();
+                    $(this).hide("slow").parent().append("<span><br>Are You Sure <br /> <a href='#s' id='yes' class='btn btn-success btn-xs'><i class='fa fa-check'></i> Yes</a> <a href='#s' id='no' class='btn btn-danger btn-xs'> <i class='fa fa-times'></i> No</a></span>");
+                    $("#no").click(function(){
+                        $(this).parent().parent().find(".deleteuser").show("slow");
+                        $(this).parent().parent().find("span").remove();
+                    });
+                    $("#yes").click(function(){
+                        $(this).parent().html("<br><i class='fa fa-spinner fa-spin'></i>deleting...");
+                        $.post("<?php echo url('patient/delete') ?>/"+id1,function(data){
+                            btn.hide("slow").next("hr").hide("slow");
+                        });
+                    });
+                });//endof deleting category
+            },
+            "fnInitComplete": function(oSettings, json) {
+                $('.dataTables_filter input').attr("placeholder", "Search");
+            },
+            "oColVis": {
+                "buttonText": '<i class="fa fa-eye"></i>'
+            }
+        });
+
+        $('.ColVis_MasterButton').on('click', function(){
+            var newtop = $('.ColVis_collection').position().top - 45;
+
+            $('.ColVis_collection').addClass('dropdown-menu');
+            $('.ColVis_collection>li>label').addClass('btn btn-default')
+            $('.ColVis_collection').css('top', newtop + 'px');
+        });
+
+        $('.DTTT_button_collection').on('click', function(){
+            var newtop = $('.DTTT_dropdown').position().top - 45;
+            $('.DTTT_dropdown').css('top', newtop + 'px');
+        });
+
+        //initialize chosen
+        $('.dataTables_length select').chosen({disable_search_threshold: 10});
+
+        // Add custom class
+        $('div.dataTables_filter input').addClass('form-control');
+        $('div.dataTables_length select').addClass('form-control');
+
+
+
+    } );
+</script>
+
+<?php
+
+
+    }
     public function makePie(){
         $title = "";$pat = false;
         $row = "categories: [";
@@ -1030,10 +1213,11 @@ class GeneralController extends \BaseController {
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
-            if((parent::maxAge()%Input::get('age')) == 0){
+            $agetouse = (Input::get('age')==0)?3:Input::get('age');
+            if((parent::maxAge()%$agetouse) == 0){
                 $limit = parent::maxAge();
             } else{
-                $limit = (parent::maxAge()-(parent::maxAge()%Input::get('age')))+Input::get('age');
+                $limit = (parent::maxAge()-(parent::maxAge()%$agetouse))+$agetouse;
             }
             //making a loop for values
             $k = 0;
@@ -1066,7 +1250,7 @@ class GeneralController extends \BaseController {
                         $patientquery = DB::table('patient');
                         $visitquery   = DB::table('visit');
                         $query = $this->processQuery($patientquery,$visitquery);
-                        $que = $this->checkCondition($query,$pat,$key1)->whereBetween('birth_date',array($end,$start));
+                        $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                         $column .= ($i < $limit)?$que->count().",":$que->count();
                         $k=$i;
                     }
@@ -1123,37 +1307,84 @@ class GeneralController extends \BaseController {
      * a function to export data to excel
      */
     public function excelDownload(){
+        if(isset($_POST['records'])){
         /** Include PHPExcel */
         require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
 
 
         // Create new PHPExcel object
         $objPHPExcel = new PHPExcel();
+        $title = "";$pat = false;
+        $usequery = "";
+        if(Input::get("horizontal") == "Year"){
 
+            $from = Input::get('year')."-01-01";
+            $to = Input::get('year')."-12-31";
+            $patientquery = DB::table('patient');
+            $visitquery   = DB::table('visit');
+            $query = $this->processQuery($patientquery,$visitquery);
+            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $usequery=$query[0]->whereBetween('created_at',array($from,$to))->get();
+        }
+        elseif(Input::get("horizontal") == "Years"){
+
+            $from = Input::get('start')."-01-01";
+            $to = Input::get('end')."-12-31";
+            $patientquery = DB::table('patient');
+            $visitquery   = DB::table('visit');
+            $query = $this->processQuery($patientquery,$visitquery);
+            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $usequery=$query[0]->whereBetween('created_at',array($from,$to))->get();
+        }
+        elseif(Input::get("horizontal") == "Age Range"){
+
+            $patientquery = DB::table('patient');
+            $visitquery   = DB::table('visit');
+            $query = $this->processQuery($patientquery,$visitquery);
+            $usequery=$query[0]->get();
+            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+
+        }
         // Set document properties
-        $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
-            ->setLastModifiedBy("Maarten Balliauw")
-            ->setTitle("Office 2007 XLSX Test Document")
-            ->setSubject("Office 2007 XLSX Test Document")
-            ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
-            ->setKeywords("office 2007 openxml php")
-            ->setCategory("Test result file");
+        $objPHPExcel->getProperties()->setCreator("Cervical Cancer Prevention Program")
+            ->setLastModifiedBy(Auth::user()->first_name)
+            ->setTitle($title)
+            ->setSubject($title)
+            ->setDescription("Cervical Cancer Prevention Program Reports")
+            ->setKeywords("cancer cecap openxml php")
+            ->setCategory("Result file");
 
 
-        // Add some data
+        // Tittle
         $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A1', 'Hello')
-            ->setCellValue('B2', 'world!')
-            ->setCellValue('C1', 'Hello')
-            ->setCellValue('D2', 'world!');
+            ->setCellValue('A1', 'Name')
+            ->setCellValue('B1', 'Age')
+            ->setCellValue('C1', 'Region')
+            ->setCellValue('D1', 'District')
+            ->setCellValue('E1', 'Facility')
+            ->setCellValue('F1', 'Marital Status')
+            ->setCellValue('G1', 'HIV Status')
+            ->setCellValue('H1', 'Contraceptive Status')
+            ->setCellValue('I1', 'Last Visit');
 
-        // Miscellaneous glyphs, UTF-8
-        $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A4', 'Miscellaneous glyphs')
-            ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
+        $k  = 2;
+        foreach($usequery as $us){
+            $patient = Patient::find($us->id);
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue("A{$k}", $us->first_name." " .  $us->middle_name ." ". $us->last_name  )
+                ->setCellValue("B{$k}", date('Y')-date('Y',strtotime($us->birth_date)))
+                ->setCellValue("C{$k}", $patient->report->regions->region)
+                ->setCellValue("D{$k}", $patient->report->districts->district)
+                ->setCellValue("E{$k}", Facility::find($us->facility_id)->facility_name)
+                ->setCellValue("F{$k}", $patient->report->marital_status)
+                ->setCellValue("G{$k}", $patient->report->HIV_status)
+                ->setCellValue("H{$k}", $patient->report->contraceptive_status)
+                ->setCellValue("I{$k}", date('j M Y',strtotime($patient->visit()->orderBy('created_at','DESC')->first()->visit_date)));
+            $k++;
+        }
 
         // Rename worksheet
-        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+        $objPHPExcel->getActiveSheet()->setTitle("Cervical Cancer Patient Report");
 
 
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
@@ -1162,7 +1393,309 @@ class GeneralController extends \BaseController {
 
         // Redirect output to a client’s web browser (Excel2007)
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="01simple.xlsx"');
+        header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
+        header('Cache-Control: max-age=0');
+        // If you're serving to IE 9, then the following may be needed
+        header('Cache-Control: max-age=1');
+
+        // If you're serving to IE over SSL, then the following may be needed
+        header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+        header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+        header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+        header ('Pragma: public'); // HTTP/1.0
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save('php://output');
+        exit;
+        }elseif(isset($_POST['reports'])){
+                /** Include PHPExcel */
+                require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
+
+                // Create new PHPExcel object
+                $objPHPExcel = new PHPExcel();
+                $title = "";$pat = false;
+                $row = array();
+                $column = array();
+                $columntype = $this->generateArray(Input::get("show"));
+
+                if(Input::get("vertical") == "Patients"){
+                    $pat = true;
+                }
+                if(Input::get("horizontal") == "Year"){
+                    $row = array("01"=>"jan","02"=>"feb","03"=>"mar","04"=>"apr","05"=>"may","06"=>"jun","07"=>"jul","08"=>"aug","09"=>"sep","10"=>"oct","11"=>"nov","12"=>"dec");
+
+                    foreach($row as $key => $value){
+                        $from = Input::get('year')."-".$key."-01";
+                        $to = Input::get('year')."-".$key."-31";
+                        if(isset($columntype)){
+                            foreach($columntype as $key1=>$value1){
+                                $patientquery = DB::table('patient');
+                                $visitquery   = DB::table('visit');
+                                $query = $this->processQuery($patientquery,$visitquery);
+                                $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
+                                $column[$value1][] = $que->count();
+                            }
+                            $title = Input::get('vertical')." ". $query[2]." ".Input::get('year');;
+                        }
+                    }
+                }
+                elseif(Input::get("horizontal") == "Years"){
+                    $row = range(Input::get('start'),Input::get('end'));
+
+                    foreach($row as $value){
+                        $from = $value."-01-01";
+                        $to = $value."-12-31";
+                        if(isset($columntype)){
+                            foreach($columntype as $key1=>$value1){
+                                $patientquery = DB::table('patient');
+                                $visitquery   = DB::table('visit');
+                                $query = $this->processQuery($patientquery,$visitquery);
+                                $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
+                                $column[$value1][] = $que->count();
+                            }
+                            $title = Input::get('vertical')." ". $query[2]." ".Input::get('start')." - ".Input::get('end');
+                        }
+                    }
+                }
+                elseif(Input::get("horizontal") == "Age Range"){
+                    //setting the limits
+                    $agetouse = (Input::get('age')==0)?3:Input::get('age');
+                    if((parent::maxAge()%$agetouse) == 0){
+                        $limit = parent::maxAge();
+                    } else{
+                        $limit = (parent::maxAge()-(parent::maxAge()%$agetouse))+$agetouse;
+                    }
+                    //making a loop for values
+                    //year iterator
+                    $k = 0;
+                    //getting age
+                    $range = Input::get('age');
+                    $yeardate = date("Y")+1;
+                    $yaerdate1 = $yeardate."-01-01";
+
+                    //creating title
+                    $data = array();
+                    for($i=$range;$i<=$limit;$i+=$range){
+                        $row[] = $k ." - ". $i;
+                        //start year
+                        $time = $k*365*24*3600;
+                        $today = date("Y-m-d");
+                        $timerange = strtotime($today) - $time;
+                        $start  = (date("Y",$timerange)+1)."-01-01";
+                        //end year
+                        $time1 = $i*365*24*3600;
+                        $timerange1 = strtotime($today) - $time1;
+                        $end = date("Y",$timerange1)."-01-01";
+                        if(isset($columntype)){
+                            foreach($columntype as $key1=>$value1){
+                                $patientquery = DB::table('patient');
+                                $visitquery   = DB::table('visit');
+                                $query = $this->processQuery($patientquery,$visitquery);
+                                $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
+                                $column[$value1][] = $que->count();
+                            }
+                            $title = Input::get('vertical')." Age Range ". $query[2];
+                        }
+                        $k=$i;
+                    }
+                }
+
+                // Set document properties
+                $objPHPExcel->getProperties()->setCreator("Cervical Cancer Prevention Program")
+                    ->setLastModifiedBy(Auth::user()->first_name)
+                    ->setTitle($title)
+                    ->setSubject($title)
+                    ->setDescription("Cervical Cancer Prevention Program Reports")
+                    ->setKeywords("cancer cecap openxml php")
+                    ->setCategory("Result file");
+
+
+                $latterArr = Array("A","B","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AB","AC","AD","AE","AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ","BA","BB","BC","BD","BE","BF","BG","BH","BI","BJ","BK","BM","BL","BO","BP","BQ","BR","BS","BT","BU","BV","BW","BX","BY","BZ");
+                $ttlecont = 1;
+                $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A1', Input::get("show"));
+                foreach($row as $header){
+                    $objPHPExcel->setActiveSheetIndex(0)
+                        ->setCellValue("{$latterArr[$ttlecont]}1", $header);
+                    $ttlecont++;
+                }
+                $k=2; $colcount=1;
+                foreach($column as $keys => $cols){
+                    $objPHPExcel->setActiveSheetIndex(0)
+                        ->setCellValue("A{$k}", $keys);
+                    foreach($cols as $colsval){
+                        $objPHPExcel->setActiveSheetIndex(0)
+                            ->setCellValue("{$latterArr[$colcount]}{$k}", $colsval);
+                        $colcount++;
+                    }
+                    $colcount=1;
+                    $k++;
+                }
+                // Rename worksheet
+                $objPHPExcel->getActiveSheet()->setTitle("Cervical Cancer Patient Report");
+
+
+                // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+                $objPHPExcel->setActiveSheetIndex(0);
+
+
+                // Redirect output to a client’s web browser (Excel2007)
+                header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+                header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
+                header('Cache-Control: max-age=0');
+                // If you're serving to IE 9, then the following may be needed
+                header('Cache-Control: max-age=1');
+
+                // If you're serving to IE over SSL, then the following may be needed
+                header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+                header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+                header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+                header ('Pragma: public'); // HTTP/1.0
+
+                $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+                $objWriter->save('php://output');
+                exit;
+        }
+    }
+/**
+     * a function to export data to excel
+     */
+    public function excelDownload1(){
+        /** Include PHPExcel */
+        require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
+
+
+        // Create new PHPExcel object
+        $objPHPExcel = new PHPExcel();
+        $title = "";$pat = false;
+        $row = array();
+        $column = array();
+        $columntype = $this->generateArray(Input::get("show"));
+
+        if(Input::get("vertical") == "Patients"){
+            $pat = true;
+        }
+        if(Input::get("horizontal") == "Year"){
+            $row = array("01"=>"jan","02"=>"feb","03"=>"mar","04"=>"apr","05"=>"may","06"=>"jun","07"=>"jul","08"=>"aug","09"=>"sep","10"=>"oct","11"=>"nov","12"=>"dec");
+
+            foreach($row as $key => $value){
+                $from = Input::get('year')."-".$key."-01";
+                $to = Input::get('year')."-".$key."-31";
+                if(isset($columntype)){
+                    foreach($columntype as $key1=>$value1){
+                        $patientquery = DB::table('patient');
+                        $visitquery   = DB::table('visit');
+                        $query = $this->processQuery($patientquery,$visitquery);
+                        $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
+                        $column[$value1][] = $que->count();
+                    }
+                    $title = Input::get('vertical')." ". $query[2]." ".Input::get('year');;
+                }
+            }
+        }
+        elseif(Input::get("horizontal") == "Years"){
+            $row = range(Input::get('start'),Input::get('end'));
+
+            foreach($row as $value){
+                $from = $value."-01-01";
+                $to = $value."-12-31";
+                if(isset($columntype)){
+                    foreach($columntype as $key1=>$value1){
+                        $patientquery = DB::table('patient');
+                        $visitquery   = DB::table('visit');
+                        $query = $this->processQuery($patientquery,$visitquery);
+                        $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
+                        $column[$value1][] = $que->count();
+                    }
+                    $title = Input::get('vertical')." ". $query[2]." ".Input::get('start')." - ".Input::get('end');
+                }
+            }
+        }
+        elseif(Input::get("horizontal") == "Age Range"){
+            //setting the limits
+            $agetouse = (Input::get('age')==0)?3:Input::get('age');
+            if((parent::maxAge()%$agetouse) == 0){
+                $limit = parent::maxAge();
+            } else{
+                $limit = (parent::maxAge()-(parent::maxAge()%$agetouse))+$agetouse;
+            }
+            //making a loop for values
+            //year iterator
+            $k = 0;
+            //getting age
+            $range = Input::get('age');
+            $yeardate = date("Y")+1;
+            $yaerdate1 = $yeardate."-01-01";
+
+            //creating title
+            $data = array();
+            for($i=$range;$i<=$limit;$i+=$range){
+                $row[] = $k ." - ". $i;
+                //start year
+                $time = $k*365*24*3600;
+                $today = date("Y-m-d");
+                $timerange = strtotime($today) - $time;
+                $start  = (date("Y",$timerange)+1)."-01-01";
+                //end year
+                $time1 = $i*365*24*3600;
+                $timerange1 = strtotime($today) - $time1;
+                $end = date("Y",$timerange1)."-01-01";
+                if(isset($columntype)){
+                    foreach($columntype as $key1=>$value1){
+                        $patientquery = DB::table('patient');
+                        $visitquery   = DB::table('visit');
+                        $query = $this->processQuery($patientquery,$visitquery);
+                        $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
+                        $column[$value1][] = $que->count();
+                    }
+                    $title = Input::get('vertical')." Age Range ". $query[2];
+                }
+                $k=$i;
+            }
+        }
+
+        // Set document properties
+        $objPHPExcel->getProperties()->setCreator("Cervical Cancer Prevention Program")
+            ->setLastModifiedBy(Auth::user()->first_name)
+            ->setTitle($title)
+            ->setSubject($title)
+            ->setDescription("Cervical Cancer Prevention Program Reports")
+            ->setKeywords("cancer cecap openxml php")
+            ->setCategory("Result file");
+
+
+        $latterArr = Array("A","B","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AB","AC","AD","AE","AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ","BA","BB","BC","BD","BE","BF","BG","BH","BI","BJ","BK","BM","BL","BO","BP","BQ","BR","BS","BT","BU","BV","BW","BX","BY","BZ");
+        $ttlecont = 1;
+        $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A1', Input::get("show"));
+        foreach($row as $header){
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue("{$latterArr[$ttlecont]}1", $header);
+            $ttlecont++;
+        }
+        $k=2; $colcount=1;
+         foreach($column as $keys => $cols){
+             $objPHPExcel->setActiveSheetIndex(0)
+                 ->setCellValue("A{$k}", $keys);
+              foreach($cols as $colsval){
+                  $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue("{$latterArr[$colcount]}{$k}", $colsval);
+                  $colcount++;
+              }
+             $colcount=1;
+             $k++;
+         }
+        // Rename worksheet
+        $objPHPExcel->getActiveSheet()->setTitle($title);
+
+
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $objPHPExcel->setActiveSheetIndex(0);
+
+
+        // Redirect output to a client’s web browser (Excel2007)
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
         header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');

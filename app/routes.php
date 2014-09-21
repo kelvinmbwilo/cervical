@@ -112,6 +112,13 @@ Route::get('reports',array('uses'=>'ReportController@index'));
 //displaying index page
 Route::post('reports/download',array('uses'=>'GeneralController@excelDownload'));
 
+Route::post('reports/download1',array('uses'=>'GeneralController@excelDownload1'));
+
+Route::post('report/save',array('uses'=>'ReportController@store'));
+
+Route::get('report/saved',array('uses'=>'ReportController@show'));
+
+Route::get('report/saved/{id}',array('uses'=>'ReportController@edit'));
 //displaying index page
 Route::post('reports/process',array('uses'=>'ReportController@process'));
 
@@ -208,6 +215,9 @@ Route::post('report/general/table',array('uses'=>'GeneralController@makeTable'))
 
 //displaying bar chart
 Route::post('report/general/bar',array('uses'=>'GeneralController@makeBar'));
+
+//displaying records
+Route::post('report/general/records',array('uses'=>'GeneralController@makeRecord'));
 
 //displaying column chart
 Route::post('report/general/column',array('uses'=>'GeneralController@makeColumn'));
