@@ -118,7 +118,7 @@
 <!--        <img src="{{ asset('assets/images/user.jpg') }}" style="height: 45px" />-->
     </div>
     <a class="dropdown-toggle options" data-toggle="dropdown" href="#">
-        <b>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }} </b> <i class="fa fa-caret-down"></i>
+        <i class="fa fa-user-md"></i> <b>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }} </b> <i class="fa fa-caret-down"></i>
     </a>
 
     <ul class="dropdown-menu arrow settings">
