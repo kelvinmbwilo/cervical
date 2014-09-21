@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d644752-f3c5-4d58-a704-5e0622d66db6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ReportController.php" afterPath="$PROJECT_DIR$/app/controllers/ReportController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layout/master.blade.php" afterPath="$PROJECT_DIR$/app/views/layout/master.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layout/report.blade.php" afterPath="$PROJECT_DIR$/app/views/layout/report.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/sendsms.php" afterPath="$PROJECT_DIR$/public/sendsms.php" />
     </list>
     <ignored path="cervical.iws" />
@@ -40,9 +37,9 @@
       <file leaf-file-name="sendsms.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/sendsms.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="41" selection-end="226" vertical-scroll-proportion="0.1978022" vertical-offset="0" max-vertical-offset="594">
+            <state line="22" column="66" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.72527474" vertical-offset="0" max-vertical-offset="594">
               <folding>
-                <marker date="1411298272776" expanded="true" signature="328:377" placeholder="select * fro..notification..." />
+                <marker date="1411299007288" expanded="true" signature="328:377" placeholder="select * fro..notification..." />
               </folding>
             </state>
           </provider>
@@ -777,9 +774,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/sendsms.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="41" selection-end="226" vertical-scroll-proportion="0.1978022" vertical-offset="0" max-vertical-offset="594">
+        <state line="22" column="66" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.72527474" vertical-offset="0" max-vertical-offset="594">
           <folding>
-            <marker date="1411298272776" expanded="true" signature="328:377" placeholder="select * fro..notification..." />
+            <marker date="1411299007288" expanded="true" signature="328:377" placeholder="select * fro..notification..." />
           </folding>
         </state>
       </provider>

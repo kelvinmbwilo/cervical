@@ -20,7 +20,7 @@ while($row = mysql_fetch_array($query)){
 ////# example:send-message
         $smsMessageSendResult = $smsClient->sendSMS($smsMessage) or die();
         if($smsMessageSendResult){
-        $query = mysql_query('UPDATE notification SET status="pending" WHERE id="'.$row['id'].'"');
+        $query = mysql_query('UPDATE notification SET status="sent" WHERE id="'.$row['id'].'"');
         }
 # ----------------------------------------------------------------------------------------------------
     }
