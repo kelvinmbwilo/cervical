@@ -209,7 +209,7 @@ class GeneralController extends \BaseController {
     }
 
     public function makeTable(){
-        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $title = (Input::get('show')=="General")?Input::get('vertical'):Input::get('vertical')." ".Input::get('show')." ";
         $pat = false;
         $row = array();
         $column = array();
@@ -232,9 +232,10 @@ class GeneralController extends \BaseController {
                         $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
                         $column[$value1][] = $que->count();
                     }
-                    $title = Input::get('vertical')." ". $query[2]." ".Input::get('year');;
+
                 }
             }
+            $title .=" ". $query[2]." ".Input::get('year');
         }
         elseif(Input::get("horizontal") == "Years"){
             $row = range(Input::get('start'),Input::get('end'));
@@ -250,9 +251,10 @@ class GeneralController extends \BaseController {
                         $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
                         $column[$value1][] = $que->count();
                     }
-                    $title = Input::get('vertical')." ". $query[2]." ".Input::get('start')." - ".Input::get('end');
                 }
             }
+            $title .=" ". $query[2]." ".Input::get('start')." - ".Input::get('end');
+
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
@@ -291,10 +293,11 @@ class GeneralController extends \BaseController {
                         $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                         $column[$value1][] = $que->count();
                     }
-                    $title = Input::get('vertical')." Age Range ". $query[2];
                 }
                 $k=$i;
             }
+            $title .=" Age Range ". $query[2];
+
         }
 
 
@@ -326,7 +329,7 @@ class GeneralController extends \BaseController {
     }
 
     public function makeBar(){
-        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $title = (Input::get('show')=="General")?Input::get('vertical'):Input::get('vertical')." ".Input::get('show')." ";
         $pat = false;
         $row = "categories: [";
         $column = "";
@@ -364,7 +367,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Years"){
             $row1 = range(Input::get('start'),Input::get('end'));
@@ -392,7 +395,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
@@ -442,7 +445,7 @@ class GeneralController extends \BaseController {
                 }
             }
 
-            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+            $title .=" Age Range ". $query[2]." ";
 
         }
 
@@ -491,7 +494,7 @@ class GeneralController extends \BaseController {
     }
 
     public function makeColumn(){
-        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $title = (Input::get('show')=="General")?Input::get('vertical'):Input::get('vertical')." ".Input::get('show')." ";
         $pat = false;
         $row = "categories: [";
         $column = "";
@@ -529,7 +532,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Years"){
             $row1 = range(Input::get('start'),Input::get('end'));
@@ -557,7 +560,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
@@ -607,7 +610,7 @@ class GeneralController extends \BaseController {
                 }
             }
 
-            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+            $title .=" Age Range ". $query[2]." ";
 
         }
 
@@ -656,7 +659,7 @@ class GeneralController extends \BaseController {
     }
 
     public function makeCombined(){
-        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $title = (Input::get('show')=="General")?Input::get('vertical'):Input::get('vertical')." ".Input::get('show')." ";
         $pat = false;
         $row = "categories: [";
         $column = "";
@@ -698,7 +701,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Years"){
             $row1 = range(Input::get('start'),Input::get('end'));
@@ -729,7 +732,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
@@ -783,7 +786,7 @@ class GeneralController extends \BaseController {
             }
 
 
-            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+            $title .=" Age Range ". $query[2]." ";
 
         }
 
@@ -829,7 +832,7 @@ class GeneralController extends \BaseController {
     }
 
     public function makeLine(){
-        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $title = (Input::get('show')=="General")?Input::get('vertical'):Input::get('vertical')." ".Input::get('show')." ";
         $pat = false;
         $row = "categories: [";
         $column = "";
@@ -867,7 +870,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Years"){
             $row1 = range(Input::get('start'),Input::get('end'));
@@ -895,7 +898,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
@@ -945,7 +948,7 @@ class GeneralController extends \BaseController {
                 }
             }
 
-            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+            $title .=" Age Range ". $query[2]." ";
 
         }
         $row .= "]";
@@ -987,7 +990,7 @@ class GeneralController extends \BaseController {
     }
 
     public function makeRecord(){
-        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $title = (Input::get('show')=="General")?Input::get('vertical'):Input::get('vertical')." ".Input::get('show')." ";
         $pat = false;
         $usequery = "";
         if(Input::get("horizontal") == "Year"){
@@ -997,7 +1000,7 @@ class GeneralController extends \BaseController {
             $patientquery = DB::table('patient');
             $visitquery   = DB::table('visit');
             $query = $this->processQuery($patientquery,$visitquery);
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
             $usequery=$query[0]->whereBetween('created_at',array($from,$to))->get();
         }
         elseif(Input::get("horizontal") == "Years"){
@@ -1007,7 +1010,7 @@ class GeneralController extends \BaseController {
             $patientquery = DB::table('patient');
             $visitquery   = DB::table('visit');
             $query = $this->processQuery($patientquery,$visitquery);
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
             $usequery=$query[0]->whereBetween('created_at',array($from,$to))->get();
         }
         elseif(Input::get("horizontal") == "Age Range"){
@@ -1016,7 +1019,7 @@ class GeneralController extends \BaseController {
             $visitquery   = DB::table('visit');
             $query = $this->processQuery($patientquery,$visitquery);
             $usequery=$query[0]->get();
-            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+            $title .=" Age Range ". $query[2]." ";
 
         }
         ?>
@@ -1148,7 +1151,7 @@ class GeneralController extends \BaseController {
 
     }
     public function makePie(){
-        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $title = (Input::get('show')=="General")?Input::get('vertical'):Input::get('vertical')." ".Input::get('show')." ";
         $pat = false;
         $row = "categories: [";
         $column = "";
@@ -1188,7 +1191,7 @@ class GeneralController extends \BaseController {
                 }
                 $column .= "]}";
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Years"){
             $row1 = range(Input::get('start'),Input::get('end'));
@@ -1216,7 +1219,7 @@ class GeneralController extends \BaseController {
                     $col++;
                 }
             }
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
         }
         elseif(Input::get("horizontal") == "Age Range"){
             //setting the limits
@@ -1266,7 +1269,7 @@ class GeneralController extends \BaseController {
                 }
             }
 
-            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+            $title .=" Age Range ". $query[2]." ";
 
         }
 
@@ -1314,7 +1317,7 @@ class GeneralController extends \BaseController {
      * a function to export data to excel
      */
     public function excelDownload(){
-       
+
         if(isset($_POST['records'])){
         /** Include PHPExcel */
         require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
@@ -1331,7 +1334,7 @@ class GeneralController extends \BaseController {
             $patientquery = DB::table('patient');
             $visitquery   = DB::table('visit');
             $query = $this->processQuery($patientquery,$visitquery);
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
             $usequery=$query[0]->whereBetween('created_at',array($from,$to))->get();
         }
         elseif(Input::get("horizontal") == "Years"){
@@ -1341,7 +1344,7 @@ class GeneralController extends \BaseController {
             $patientquery = DB::table('patient');
             $visitquery   = DB::table('visit');
             $query = $this->processQuery($patientquery,$visitquery);
-            $title = Input::get('vertical')." ". $query[2]." ".Input::get('Year');
+            $title .=" ". $query[2]." ".Input::get('Year');
             $usequery=$query[0]->whereBetween('created_at',array($from,$to))->get();
         }
         elseif(Input::get("horizontal") == "Age Range"){
@@ -1350,7 +1353,7 @@ class GeneralController extends \BaseController {
             $visitquery   = DB::table('visit');
             $query = $this->processQuery($patientquery,$visitquery);
             $usequery=$query[0]->get();
-            $title = Input::get('vertical')." Age Range ". $query[2]." ";
+            $title .=" Age Range ". $query[2]." ";
 
         }
         // Set document properties
@@ -1443,7 +1446,7 @@ class GeneralController extends \BaseController {
                                 $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
                                 $column[$value1][] = $que->count();
                             }
-                            $title = Input::get('vertical')." ". $query[2]." ".Input::get('year');;
+                            $title .=" ". $query[2]." ".Input::get('year');;
                         }
                     }
                 }
@@ -1461,7 +1464,7 @@ class GeneralController extends \BaseController {
                                 $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
                                 $column[$value1][] = $que->count();
                             }
-                            $title = Input::get('vertical')." ". $query[2]." ".Input::get('start')." - ".Input::get('end');
+                            $title .=" ". $query[2]." ".Input::get('start')." - ".Input::get('end');
                         }
                     }
                 }
@@ -1502,7 +1505,7 @@ class GeneralController extends \BaseController {
                                 $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                                 $column[$value1][] = $que->count();
                             }
-                            $title = Input::get('vertical')." Age Range ". $query[2];
+                            $title .=" Age Range ". $query[2];
                         }
                         $k=$i;
                     }
@@ -1597,7 +1600,7 @@ class GeneralController extends \BaseController {
                         $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
                         $column[$value1][] = $que->count();
                     }
-                    $title = Input::get('vertical')." ". $query[2]." ".Input::get('year');;
+                    $title .=" ". $query[2]." ".Input::get('year');;
                 }
             }
         }
@@ -1615,7 +1618,7 @@ class GeneralController extends \BaseController {
                         $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
                         $column[$value1][] = $que->count();
                     }
-                    $title = Input::get('vertical')." ". $query[2]." ".Input::get('start')." - ".Input::get('end');
+                    $title .=" ". $query[2]." ".Input::get('start')." - ".Input::get('end');
                 }
             }
         }
@@ -1656,7 +1659,7 @@ class GeneralController extends \BaseController {
                         $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                         $column[$value1][] = $que->count();
                     }
-                    $title = Input::get('vertical')." Age Range ". $query[2];
+                    $title .=" Age Range ". $query[2];
                 }
                 $k=$i;
             }

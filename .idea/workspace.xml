@@ -103,24 +103,27 @@
       <file leaf-file-name="GeneralController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/GeneralController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1316" column="7" selection-start="59715" selection-end="59715" vertical-scroll-proportion="0.40449437" vertical-offset="3906" max-vertical-offset="11484">
+            <state line="1152" column="0" selection-start="52810" selection-end="52810" vertical-scroll-proportion="0.44329897" vertical-offset="818" max-vertical-offset="8496">
               <folding>
+                <element signature="n#generateArray#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <element signature="n#checkCondition#0;n#GeneralController#0;n#!!top" expanded="false" />
                 <element signature="n#makeTable#0;n#GeneralController#0;n#!!top" expanded="false" />
                 <element signature="n#makeBar#0;n#GeneralController#0;n#!!top" expanded="false" />
                 <element signature="n#makeColumn#0;n#GeneralController#0;n#!!top" expanded="false" />
                 <element signature="n#makeCombined#0;n#GeneralController#0;n#!!top" expanded="false" />
                 <element signature="n#makeLine#0;n#GeneralController#0;n#!!top" expanded="false" />
                 <element signature="n#makeRecord#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <element signature="e#48612#48646#0" expanded="true" />
                 <element signature="n#makePie#0;n#GeneralController#0;n#!!top" expanded="false" />
-                <marker date="1411417656293" expanded="false" signature="24480:24494" placeholder="..." />
-                <marker date="1411417656293" expanded="false" signature="24577:24607" placeholder="..." />
-                <marker date="1411417656293" expanded="false" signature="24678:24687" placeholder="..." />
-                <marker date="1411417656293" expanded="false" signature="31364:31378" placeholder="..." />
-                <marker date="1411417656293" expanded="false" signature="31461:31491" placeholder="..." />
-                <marker date="1411417656293" expanded="false" signature="31562:31571" placeholder="..." />
-                <marker date="1411417656293" expanded="false" signature="38852:38866" placeholder="..." />
-                <marker date="1411417656293" expanded="false" signature="38949:38979" placeholder="..." />
-                <marker date="1411417656293" expanded="false" signature="39050:39059" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="24422:24436" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="24519:24549" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="24620:24629" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="31288:31302" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="31385:31415" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="31486:31495" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="38758:38772" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="38855:38885" placeholder="..." />
+                <marker date="1411418307597" expanded="true" signature="38956:38965" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -961,24 +964,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/GeneralController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1316" column="7" selection-start="59715" selection-end="59715" vertical-scroll-proportion="0.40449437" vertical-offset="3906" max-vertical-offset="11484">
+        <state line="1152" column="0" selection-start="52810" selection-end="52810" vertical-scroll-proportion="0.44329897" vertical-offset="818" max-vertical-offset="8496">
           <folding>
+            <element signature="n#generateArray#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <element signature="n#checkCondition#0;n#GeneralController#0;n#!!top" expanded="false" />
             <element signature="n#makeTable#0;n#GeneralController#0;n#!!top" expanded="false" />
             <element signature="n#makeBar#0;n#GeneralController#0;n#!!top" expanded="false" />
             <element signature="n#makeColumn#0;n#GeneralController#0;n#!!top" expanded="false" />
             <element signature="n#makeCombined#0;n#GeneralController#0;n#!!top" expanded="false" />
             <element signature="n#makeLine#0;n#GeneralController#0;n#!!top" expanded="false" />
             <element signature="n#makeRecord#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <element signature="e#48612#48646#0" expanded="true" />
             <element signature="n#makePie#0;n#GeneralController#0;n#!!top" expanded="false" />
-            <marker date="1411417656293" expanded="false" signature="24480:24494" placeholder="..." />
-            <marker date="1411417656293" expanded="false" signature="24577:24607" placeholder="..." />
-            <marker date="1411417656293" expanded="false" signature="24678:24687" placeholder="..." />
-            <marker date="1411417656293" expanded="false" signature="31364:31378" placeholder="..." />
-            <marker date="1411417656293" expanded="false" signature="31461:31491" placeholder="..." />
-            <marker date="1411417656293" expanded="false" signature="31562:31571" placeholder="..." />
-            <marker date="1411417656293" expanded="false" signature="38852:38866" placeholder="..." />
-            <marker date="1411417656293" expanded="false" signature="38949:38979" placeholder="..." />
-            <marker date="1411417656293" expanded="false" signature="39050:39059" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="24422:24436" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="24519:24549" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="24620:24629" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="31288:31302" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="31385:31415" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="31486:31495" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="38758:38772" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="38855:38885" placeholder="..." />
+            <marker date="1411418307597" expanded="true" signature="38956:38965" placeholder="..." />
           </folding>
         </state>
       </provider>
