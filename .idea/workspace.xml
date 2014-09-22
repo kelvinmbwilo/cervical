@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8d644752-f3c5-4d58-a704-5e0622d66db6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/GeneralController.php" afterPath="$PROJECT_DIR$/app/controllers/GeneralController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/report/myreport.blade.php" afterPath="$PROJECT_DIR$/app/views/report/myreport.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cervical.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,17 +103,24 @@
       <file leaf-file-name="GeneralController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/GeneralController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="91" selection-start="7726" selection-end="7726" vertical-scroll-proportion="0.60674155" vertical-offset="2052" max-vertical-offset="30942">
+            <state line="1316" column="7" selection-start="59715" selection-end="59715" vertical-scroll-proportion="0.40449437" vertical-offset="3906" max-vertical-offset="11484">
               <folding>
-                <marker date="1411417347453" expanded="false" signature="24360:24374" placeholder="..." />
-                <marker date="1411417347453" expanded="false" signature="24457:24487" placeholder="..." />
-                <marker date="1411417347453" expanded="false" signature="24558:24567" placeholder="..." />
-                <marker date="1411417347453" expanded="false" signature="31184:31198" placeholder="..." />
-                <marker date="1411417347453" expanded="false" signature="31281:31311" placeholder="..." />
-                <marker date="1411417347453" expanded="false" signature="31382:31391" placeholder="..." />
-                <marker date="1411417347453" expanded="false" signature="38612:38626" placeholder="..." />
-                <marker date="1411417347453" expanded="false" signature="38709:38739" placeholder="..." />
-                <marker date="1411417347453" expanded="false" signature="38810:38819" placeholder="..." />
+                <element signature="n#makeTable#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <element signature="n#makeBar#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <element signature="n#makeColumn#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <element signature="n#makeCombined#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <element signature="n#makeLine#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <element signature="n#makeRecord#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <element signature="n#makePie#0;n#GeneralController#0;n#!!top" expanded="false" />
+                <marker date="1411417656293" expanded="false" signature="24480:24494" placeholder="..." />
+                <marker date="1411417656293" expanded="false" signature="24577:24607" placeholder="..." />
+                <marker date="1411417656293" expanded="false" signature="24678:24687" placeholder="..." />
+                <marker date="1411417656293" expanded="false" signature="31364:31378" placeholder="..." />
+                <marker date="1411417656293" expanded="false" signature="31461:31491" placeholder="..." />
+                <marker date="1411417656293" expanded="false" signature="31562:31571" placeholder="..." />
+                <marker date="1411417656293" expanded="false" signature="38852:38866" placeholder="..." />
+                <marker date="1411417656293" expanded="false" signature="38949:38979" placeholder="..." />
+                <marker date="1411417656293" expanded="false" signature="39050:39059" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -518,7 +523,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1565452" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27665317" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -956,17 +961,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/GeneralController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="91" selection-start="7726" selection-end="7726" vertical-scroll-proportion="0.60674155" vertical-offset="2052" max-vertical-offset="30942">
+        <state line="1316" column="7" selection-start="59715" selection-end="59715" vertical-scroll-proportion="0.40449437" vertical-offset="3906" max-vertical-offset="11484">
           <folding>
-            <marker date="1411417347453" expanded="false" signature="24360:24374" placeholder="..." />
-            <marker date="1411417347453" expanded="false" signature="24457:24487" placeholder="..." />
-            <marker date="1411417347453" expanded="false" signature="24558:24567" placeholder="..." />
-            <marker date="1411417347453" expanded="false" signature="31184:31198" placeholder="..." />
-            <marker date="1411417347453" expanded="false" signature="31281:31311" placeholder="..." />
-            <marker date="1411417347453" expanded="false" signature="31382:31391" placeholder="..." />
-            <marker date="1411417347453" expanded="false" signature="38612:38626" placeholder="..." />
-            <marker date="1411417347453" expanded="false" signature="38709:38739" placeholder="..." />
-            <marker date="1411417347453" expanded="false" signature="38810:38819" placeholder="..." />
+            <element signature="n#makeTable#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <element signature="n#makeBar#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <element signature="n#makeColumn#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <element signature="n#makeCombined#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <element signature="n#makeLine#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <element signature="n#makeRecord#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <element signature="n#makePie#0;n#GeneralController#0;n#!!top" expanded="false" />
+            <marker date="1411417656293" expanded="false" signature="24480:24494" placeholder="..." />
+            <marker date="1411417656293" expanded="false" signature="24577:24607" placeholder="..." />
+            <marker date="1411417656293" expanded="false" signature="24678:24687" placeholder="..." />
+            <marker date="1411417656293" expanded="false" signature="31364:31378" placeholder="..." />
+            <marker date="1411417656293" expanded="false" signature="31461:31491" placeholder="..." />
+            <marker date="1411417656293" expanded="false" signature="31562:31571" placeholder="..." />
+            <marker date="1411417656293" expanded="false" signature="38852:38866" placeholder="..." />
+            <marker date="1411417656293" expanded="false" signature="38949:38979" placeholder="..." />
+            <marker date="1411417656293" expanded="false" signature="39050:39059" placeholder="..." />
           </folding>
         </state>
       </provider>

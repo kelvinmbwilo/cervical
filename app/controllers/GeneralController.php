@@ -209,7 +209,8 @@ class GeneralController extends \BaseController {
     }
 
     public function makeTable(){
-        $title = "";$pat = false;
+        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $pat = false;
         $row = array();
         $column = array();
         $columntype = $this->generateArray(Input::get("show"));
@@ -325,7 +326,8 @@ class GeneralController extends \BaseController {
     }
 
     public function makeBar(){
-        $title = "";$pat = false;
+        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $pat = false;
         $row = "categories: [";
         $column = "";
         $columntype = $this->generateArray(Input::get("show"));
@@ -489,7 +491,8 @@ class GeneralController extends \BaseController {
     }
 
     public function makeColumn(){
-        $title = "";$pat = false;
+        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $pat = false;
         $row = "categories: [";
         $column = "";
         $columntype = $this->generateArray(Input::get("show"));
@@ -653,7 +656,8 @@ class GeneralController extends \BaseController {
     }
 
     public function makeCombined(){
-        $title = "";$pat = false;
+        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $pat = false;
         $row = "categories: [";
         $column = "";
         $column1 = "";
@@ -825,7 +829,8 @@ class GeneralController extends \BaseController {
     }
 
     public function makeLine(){
-        $title = "";$pat = false;
+        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $pat = false;
         $row = "categories: [";
         $column = "";
         $columntype = $this->generateArray(Input::get("show"));
@@ -982,7 +987,8 @@ class GeneralController extends \BaseController {
     }
 
     public function makeRecord(){
-        $title = "";$pat = false;
+        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $pat = false;
         $usequery = "";
         if(Input::get("horizontal") == "Year"){
 
@@ -1142,7 +1148,8 @@ class GeneralController extends \BaseController {
 
     }
     public function makePie(){
-        $title = "";$pat = false;
+        $title = (Input::get('show')=="General")?"":Input::get('show');
+        $pat = false;
         $row = "categories: [";
         $column = "";
         $columntype = $this->generateArray(Input::get("show"));
@@ -1307,6 +1314,7 @@ class GeneralController extends \BaseController {
      * a function to export data to excel
      */
     public function excelDownload(){
+       
         if(isset($_POST['records'])){
         /** Include PHPExcel */
         require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
