@@ -242,6 +242,8 @@ class ReportController extends \BaseController {
                        $patient->created_at  = $pat->created_at;
                        $patient->updated_at  = $pat->updated_at;
                        $patient->save();
+                       $pat->server_status = 'transferred';
+                       $pat->save();
                        $report = ServerPatientReport::create(array(
                            "patient_id"                => $patient->id,
                            "bitrh_date"                => $pat->birth_date,
@@ -418,7 +420,7 @@ class ReportController extends \BaseController {
                        ));
                    }
 
-                   $vis->server_status = "transfered";
+                   $vis->server_status = "transferred";
                    $vis->save();
                    echo " <span class='text-success'> done.<i class='fa fa-check'></i></span> " .count(Visit::where('server_status','not')->get())." Remaining visit(s) to be transferred<br>";
                }catch (Exception $e){
