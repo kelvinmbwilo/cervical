@@ -267,7 +267,6 @@ class ReportController extends \BaseController {
                        $report->save();
                    }else{
                        $patient = ServerPatient::where('uid',$pat->uid);
-                       echo "patient created <br>";
                        $report = ServerPatientReport::where('patient_id',$patient->id)->first();
                        $report->region = $vis->info->region;
                        $report->district = $vis->info->district;

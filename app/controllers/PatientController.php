@@ -52,6 +52,7 @@ class PatientController extends \BaseController {
             "hospital_id"   => Input::get("hosp_no"),
             "phone"         => Input::get("phone"),
             "facility_id"   => Input::get("facility"),
+            "server_status"   => "not",
             "uid"           => uniqid(),
         ));
 
