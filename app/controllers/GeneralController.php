@@ -130,7 +130,7 @@ class GeneralController extends \BaseController {
                 $arr = explode("-",$key1);
                 ($pat)?
                     $que = $query[0]->whereIn('id', PatientReport::whereBetween('cd4_count',array($arr[0],$arr[1]))->get()->lists('patient_id')+array('0')):
-                    $que = $query[1]->whereIn('id', HivStatus::whereBetween('pitc_cd4',array($arr[0],$arr[1]))->get()->lists('visit_id')+ContraceptiveHistory::where('current_status',$key1)->get()->lists('visit_id')+array('0'));
+                    $que = $query[1]->whereIn('id', HivStatus::whereBetween('pitc_cd4_count',array($arr[0],$arr[1]))->get()->lists('visit_id')+ContraceptiveHistory::where('current_status',$key1)->get()->lists('visit_id')+array('0'));
                 break;
             case "Decline Reason":
                 ($pat)?
