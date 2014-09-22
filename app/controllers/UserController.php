@@ -103,12 +103,14 @@ class UserController extends \BaseController {
         $user->firstname  = Input::get("firstname");
         $user->lastname   = Input::get("lastname");
         $user->middlename = Input::get("middlename");
-        $user->role       = Input::get("role");
         $user->email      = Input::get("email");
         $user->phone      = Input::get("phone");
         $user->region     =(Input::has('region'))?Input::get("region"):0;
         $user->district   =(Input::has('district'))?Input::get("district"):0;
         $user->facility   =(Input::has('facility'))?Input::get("facility"):0;
+        if(Input::has('role')){
+            $user->role  = Input::get("role");
+        }
         $user->save();
         $name = $user->firstname." ".$user->middlename." ".$user->lastname;
         Logs::create(array(

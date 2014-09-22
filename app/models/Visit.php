@@ -17,7 +17,7 @@ class Visit extends Eloquent {
     protected  $guarded = array('id');
 
     public function patient(){
-        return $this->belongsTo('Patient', 'id', 'patient_id');
+        return $this->belongsTo('Patient', 'patient_id', 'id');
     }
 
     public function via(){
@@ -55,6 +55,9 @@ class Visit extends Eloquent {
 
     public function papsmea(){
         return $this->belongsTo("PapsmearStatus", 'id', 'visit_id');
+    }
+    public function notification(){
+        return $this->belongsTo("Notification", 'id', 'visit_id');
     }
 
 }

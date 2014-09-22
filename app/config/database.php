@@ -63,6 +63,17 @@ return array(
 			'prefix'    => '',
 		),
 
+        'mysql2' => array(
+			'driver'    => 'mysql',
+			'host'      => '162.243.26.128',
+			'database'  => 'cervical',
+			'username'  => 'root',
+			'password'  => 'softmed',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',

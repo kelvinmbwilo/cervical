@@ -15,7 +15,6 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        {{ uniqid() }} -- {{ uniqid() }}
         {{ Form::open(array("url"=>url("user/edit/{$user->id}"),"class"=>"form-horizontal","id"=>'FileUploader')) }}
         <h3 class="text-center text-muted">Update Your Information</h3>
         <div class='form-group'>
@@ -33,18 +32,16 @@
                 Last Name <br> {{ Form::text('lastname',$user->lastname,array('class'=>'form-control','placeholder'=>'Last Name','required'=>'required')) }}
             </div>
             <div class='col-sm-6'>
-                Email <br> {{ Form::email('email',$user->email,array('class'=>'form-control','placeholder'=>'Email','required'=>'required')) }}
+                Email <br> {{ Form::text('email',$user->email,array('class'=>'form-control','placeholder'=>'Email','required'=>'required')) }}
             </div>
         </div>
 
         <div class='form-group'>
 
-            <div class='col-sm-6'>
+            <div class='col-sm-6 col-sm-offset-3'>
                 Phone Number<br>{{ Form::text('phone',$user->phone,array('class'=>'form-control','placeholder'=>'Phone Number','required'=>'required')) }}
             </div>
-            <div class='col-sm-6'>
-                Role<br>{{ Form::select('role',array("admin"=>"Administrator","doctor"=>"Doctor"),$user->role,array('class'=>'form-control','required'=>'requiered')) }}
-            </div>
+
 
         </div>
         <div class='col-sm-12 form-group text-center'>

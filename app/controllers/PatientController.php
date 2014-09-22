@@ -13,8 +13,7 @@ class PatientController extends \BaseController {
 		return View::make('patient.list');
 	}
 
-
-/**
+    /**
 	 * Display a listing of the resource.
 	 *
  * @param int $id
@@ -53,12 +52,15 @@ class PatientController extends \BaseController {
             "hospital_id"   => Input::get("hosp_no"),
             "phone"         => Input::get("phone"),
             "facility_id"   => Input::get("facility"),
+            "uid"           => uniqid(),
         ));
 
         //adding patient visit info
         $visit = Visit::create(array(
             "patient_id" => $patient->id,
-            "visit_date" => date('Y-m-d')
+            "visit_date" => date('Y-m-d'),
+            "server_status" => 'not',
+            "user" => Auth::user()->firstname ." ".Auth::user()->middlename ." ".Auth::user()->lastname
         ));
 
         //adding address information
@@ -204,7 +206,6 @@ class PatientController extends \BaseController {
         return View::make("patient.index",compact("msg"));
 	}
 
-
 	/**
 	 * Display the specified resource.
 	 *
@@ -304,7 +305,9 @@ class PatientController extends \BaseController {
         //adding patient visit info
         $visit = Visit::create(array(
             "patient_id" => $patient->id,
-            "visit_date" => date('Y-m-d')
+            "visit_date" => date('Y-m-d'),
+            "server_status" => 'not',
+            "user" => Auth::user()->firstname ." ".Auth::user()->middlename ." ".Auth::user()->lastname
         ));
 
         //adding address information
@@ -407,6 +410,7 @@ class PatientController extends \BaseController {
         $report->partners = Input::get("sexual_partner");
         $report->partners_partner = Input::get("partner_sexual_partner");
         $report->contraceptive_status = Input::get("current_on_contra");
+        $report->facility_id = Input::get("facility");
         if(Input::has("current_contra")){
             $report->contraceptive_type = Input::get("current_contra");
 

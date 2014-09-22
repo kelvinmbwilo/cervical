@@ -4,7 +4,7 @@
 </a>
 
 <ul class="dropdown-menu wide arrow nopadding bordered">
-    <li><h1>Your expecting <strong>{{ count(Notification::where('next_visit',date('Y-m-d'))->get()) }}</strong> patient today</h1></li>
+    <li><h1>Your expecting <strong>{{ count(Notification::where('next_visit',date('Y-m-d'))->get()) }}</strong> patient today for followup</h1></li>
     @foreach(Notification::where('next_visit',date('Y-m-d'))->get() as $notify)
     <li>
         <a href="#">

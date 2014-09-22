@@ -21,6 +21,14 @@ Route::get('home', function()
 {
     return View::make('patient.list');
 });
+
+/**
+ * Data synchronisation
+ */
+Route::get('sysnc', function()
+{
+    return View::make('datasysncy');
+});
 Route::get('reminders', function()
 {
     return View::make('dashboard.reminder');
@@ -30,6 +38,11 @@ Route::post('reminder/delete/{id}', function($id)
     $not = Notification::find($id);
     $not->delete();
 });
+/**
+ * Data synchronization
+ */
+
+Route::get('synchronize', array('uses'=>'ReportController@server_sysnc'));
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
