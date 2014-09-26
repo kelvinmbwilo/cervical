@@ -1325,7 +1325,7 @@ class GeneralController extends \BaseController {
 
         // Create new PHPExcel object
         $objPHPExcel = new PHPExcel();
-        $title = "";$pat = false;
+        $title = Input::get("vertical");$pat = false;
         $usequery = "";
         if(Input::get("horizontal") == "Year"){
 
@@ -1367,32 +1367,33 @@ class GeneralController extends \BaseController {
 
 
         // Tittle
-            $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:J1');
+            $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:I1');
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1',$title);
+            $objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
         $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('B2', 'Name')
-            ->setCellValue('C2', 'Age')
-            ->setCellValue('D2', 'Region')
-            ->setCellValue('E2', 'District')
-            ->setCellValue('F2', 'Facility')
-            ->setCellValue('G2', 'Marital Status')
-            ->setCellValue('H2', 'HIV Status')
-            ->setCellValue('I2', 'Contraceptive Status')
-            ->setCellValue('J2', 'Last Visit');
+            ->setCellValue('A2', 'Name')
+            ->setCellValue('B2', 'Age')
+            ->setCellValue('C2', 'Region')
+            ->setCellValue('D2', 'District')
+            ->setCellValue('E2', 'Facility')
+            ->setCellValue('F2', 'Marital Status')
+            ->setCellValue('G2', 'HIV Status')
+            ->setCellValue('H2', 'Contraceptive Status')
+            ->setCellValue('I2', 'Last Visit');
 
         $k  = 3;
         foreach($usequery as $us){
             $patient = Patient::find($us->id);
             $objPHPExcel->setActiveSheetIndex(0)
-                ->setCellValue("B{$k}", $us->first_name." " .  $us->middle_name ." ". $us->last_name  )
-                ->setCellValue("C{$k}", date('Y')-date('Y',strtotime($us->birth_date)))
-                ->setCellValue("D{$k}", $patient->report->regions->region)
-                ->setCellValue("E{$k}", $patient->report->districts->district)
-                ->setCellValue("F{$k}", Facility::find($us->facility_id)->facility_name)
-                ->setCellValue("G{$k}", $patient->report->marital_status)
-                ->setCellValue("H{$k}", $patient->report->HIV_status)
-                ->setCellValue("I{$k}", $patient->report->contraceptive_status)
-                ->setCellValue("J{$k}", date('j M Y',strtotime($patient->visit()->orderBy('created_at','DESC')->first()->visit_date)));
+                ->setCellValue("A{$k}", $us->first_name." " .  $us->middle_name ." ". $us->last_name  )
+                ->setCellValue("B{$k}", date('Y')-date('Y',strtotime($us->birth_date)))
+                ->setCellValue("C{$k}", $patient->report->regions->region)
+                ->setCellValue("D{$k}", $patient->report->districts->district)
+                ->setCellValue("E{$k}", Facility::find($us->facility_id)->facility_name)
+                ->setCellValue("F{$k}", $patient->report->marital_status)
+                ->setCellValue("G{$k}", $patient->report->HIV_status)
+                ->setCellValue("H{$k}", $patient->report->contraceptive_status)
+                ->setCellValue("I{$k}", date('j M Y',strtotime($patient->visit()->orderBy('created_at','DESC')->first()->visit_date)));
             $k++;
         }
 
@@ -1426,7 +1427,7 @@ class GeneralController extends \BaseController {
 
                 // Create new PHPExcel object
                 $objPHPExcel = new PHPExcel();
-                $title = "";$pat = false;
+                $title = Input::get("vertical");$pat = false;
                 $row = array();
                 $column = array();
                 $columntype = $this->generateArray(Input::get("show"));
@@ -1450,7 +1451,7 @@ class GeneralController extends \BaseController {
                             }
 
                         }
-                    }$title .=" ". $query[2]." ".Input::get('year');;
+                    }$title .=" ". $query[2]." ".Input::get('year');
                 }
                 elseif(Input::get("horizontal") == "Years"){
                     $row = range(Input::get('start'),Input::get('end'));
@@ -1523,8 +1524,8 @@ class GeneralController extends \BaseController {
                     ->setKeywords("cancer cecap openxml php")
                     ->setCategory("Result file");
 
-            $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:J1');
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1',$title);
+
+
 
                 $latterArr = Array("A","B","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AB","AC","AD","AE","AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ","BA","BB","BC","BD","BE","BF","BG","BH","BI","BJ","BK","BM","BL","BO","BP","BQ","BR","BS","BT","BU","BV","BW","BX","BY","BZ");
                 $ttlecont = 1;
@@ -1535,7 +1536,11 @@ class GeneralController extends \BaseController {
                         ->setCellValue("{$latterArr[$ttlecont]}2", $header);
                     $ttlecont++;
                 }
-                $k=3; $colcount=1;
+            $objPHPExcel->setActiveSheetIndex(0)->mergeCells("A1:{$latterArr[$ttlecont-1]}1");
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1',$title);
+            $objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+            $k=3; $colcount=1;
                 foreach($column as $keys => $cols){
                     $objPHPExcel->setActiveSheetIndex(0)
                         ->setCellValue("A{$k}", $keys);
