@@ -157,6 +157,8 @@
 
 <script>
     $(function(){
+        $.post("<?php echo asset('sendsms.php') ?>",function(data){
+        });
         setInterval(function(){
             $.post("<?php echo asset('sendsms.php') ?>",function(data){
             });

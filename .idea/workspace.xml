@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d644752-f3c5-4d58-a704-5e0622d66db6" name="Default" comment="" />
+    <list default="true" id="8d644752-f3c5-4d58-a704-5e0622d66db6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layout/master.blade.php" afterPath="$PROJECT_DIR$/app/views/layout/master.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="cervical.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,24 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gynocology.blade.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/follow_up/gynocology.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="78" selection-start="209" selection-end="209" vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="774">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hiv.blade.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/follow_up/hiv.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="121" selection-start="786" selection-end="786" vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="2196">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GeneralController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/GeneralController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -69,10 +54,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.blade.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="list.blade.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/patient/list.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="137" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.54310346" vertical-offset="594" max-vertical-offset="2502">
+            <state line="47" column="137" selection-start="1697" selection-end="1697" vertical-scroll-proportion="-9.333333" vertical-offset="594" max-vertical-offset="2502">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="master.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layout/master.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="160" column="11" selection-start="5956" selection-end="5956" vertical-scroll-proportion="-8.518518" vertical-offset="2650" max-vertical-offset="3150">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sendsms.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/sendsms.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
               <folding />
             </state>
           </provider>
@@ -145,7 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/layout/report.blade.php" />
         <option value="$PROJECT_DIR$/public/sendsms.php" />
         <option value="$PROJECT_DIR$/app/models/Server/CancerType.php" />
         <option value="$PROJECT_DIR$/app/models/Server/ServerDashboard.php" />
@@ -196,6 +198,7 @@
         <option value="$PROJECT_DIR$/app/views/dashboard/reminder.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/GeneralController.php" />
         <option value="$PROJECT_DIR$/app/views/patient/list.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/layout/master.blade.php" />
       </list>
     </option>
   </component>
@@ -247,6 +250,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cervical" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cervical" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cervical" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -323,64 +340,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="patient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cervical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cervical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cervical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cervical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cervical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cervical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Classes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -499,11 +458,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/ServerColposcopyStatus.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="39" selection-start="625" selection-end="625" vertical-scroll-proportion="-18.0" vertical-offset="0" max-vertical-offset="648" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/ServerContraceptiveHistory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="39" selection-start="767" selection-end="767" vertical-scroll-proportion="-19.555555" vertical-offset="30" max-vertical-offset="720" />
@@ -632,11 +586,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/facilities/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="6" selection-start="0" selection-end="326" vertical-scroll-proportion="0.5972851" vertical-offset="0" max-vertical-offset="663" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layout/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="6" selection-start="5863" selection-end="6022" vertical-scroll-proportion="0.0" vertical-offset="2464" max-vertical-offset="3114" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/routes.php">
@@ -912,7 +861,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/patient/list.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="137" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.54310346" vertical-offset="594" max-vertical-offset="2502">
+        <state line="47" column="137" selection-start="1697" selection-end="1697" vertical-scroll-proportion="-9.333333" vertical-offset="594" max-vertical-offset="2502">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layout/master.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="11" selection-start="5956" selection-end="5956" vertical-scroll-proportion="-8.518518" vertical-offset="2650" max-vertical-offset="3150">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/sendsms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
           <folding />
         </state>
       </provider>
