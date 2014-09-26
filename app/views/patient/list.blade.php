@@ -45,7 +45,7 @@ $patient = Patient::all();
                 <td>{{ $us->report->regions->region }}</td>
                 <td>{{ $us->report->districts->district }}</td>
                 <td>{{ Facility::find($us->facility_id)->facility_name }}</td>
-                <td>{{ date('j M Y',strtotime($us->visit()->orderBy('created_at','DESC')->first()->visit_date)) }}</td>
+                <td>@if($us->visit()){{ date('j M Y',strtotime($us->visit()->orderBy('created_at','DESC')->first()->visit_date)) }}@endif</td>
                 <td id="{{ $us->id }}">
                     <a href='{{ url("patient/follow_up/{$us->id}") }}' title="View Staff log" class="userlog"><i class="fa fa-mail-forward text-success"></i> Follow Up</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ url("patients/{$us->id}") }}" title="patient Information" class="edituser"><i class="fa fa-info-circle text-info"></i> info</a>&nbsp;&nbsp;&nbsp;
