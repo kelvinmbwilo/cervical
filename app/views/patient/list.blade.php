@@ -42,8 +42,8 @@ $patient = Patient::all();
                 <td>{{ $us->hospital_id }}</td>
                 <td style="text-transform: capitalize">{{ $us->first_name }} {{ $us->middle_name }} {{ $us->last_name }}</td>
                 <td>{{ date('Y')-date('Y',strtotime($us->birth_date)) }} Yrs</td>
-                <td>{{ $us->info()->orderBy('created_at','DESC')->first()->regions->region }}</td>
-                <td>{{ $us->info()->orderBy('created_at','DESC')->first()->districts->district }}</td>
+                <td>{{ $us->report->regions->region }}</td>
+                <td>{{ $us->report->districts->district }}</td>
                 <td>{{ Facility::find($us->facility_id)->facility_name }}</td>
                 <td>{{ date('j M Y',strtotime($us->visit()->orderBy('created_at','DESC')->first()->visit_date)) }}</td>
                 <td id="{{ $us->id }}">
