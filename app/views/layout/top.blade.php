@@ -172,7 +172,7 @@
                 </li>
                 <li>
                     <a href="{{ url('sysnc') }}">
-                        <i class="fa fa-recycle"></i> Data Synchronise
+                        <i class="fa fa-recycle"></i> Data Synchronise  ({{ count(Visit::where('server_status','not')->get()) }})
                     </a>
                 </li>
                 @endif

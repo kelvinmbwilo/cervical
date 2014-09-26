@@ -1367,30 +1367,32 @@ class GeneralController extends \BaseController {
 
 
         // Tittle
+            $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:J1');
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1',$title);
         $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A1', 'Name')
-            ->setCellValue('B1', 'Age')
-            ->setCellValue('C1', 'Region')
-            ->setCellValue('D1', 'District')
-            ->setCellValue('E1', 'Facility')
-            ->setCellValue('F1', 'Marital Status')
-            ->setCellValue('G1', 'HIV Status')
-            ->setCellValue('H1', 'Contraceptive Status')
-            ->setCellValue('I1', 'Last Visit');
+            ->setCellValue('B2', 'Name')
+            ->setCellValue('C2', 'Age')
+            ->setCellValue('D2', 'Region')
+            ->setCellValue('E2', 'District')
+            ->setCellValue('F2', 'Facility')
+            ->setCellValue('G2', 'Marital Status')
+            ->setCellValue('H2', 'HIV Status')
+            ->setCellValue('I2', 'Contraceptive Status')
+            ->setCellValue('J2', 'Last Visit');
 
-        $k  = 2;
+        $k  = 3;
         foreach($usequery as $us){
             $patient = Patient::find($us->id);
             $objPHPExcel->setActiveSheetIndex(0)
-                ->setCellValue("A{$k}", $us->first_name." " .  $us->middle_name ." ". $us->last_name  )
-                ->setCellValue("B{$k}", date('Y')-date('Y',strtotime($us->birth_date)))
-                ->setCellValue("C{$k}", $patient->report->regions->region)
-                ->setCellValue("D{$k}", $patient->report->districts->district)
-                ->setCellValue("E{$k}", Facility::find($us->facility_id)->facility_name)
-                ->setCellValue("F{$k}", $patient->report->marital_status)
-                ->setCellValue("G{$k}", $patient->report->HIV_status)
-                ->setCellValue("H{$k}", $patient->report->contraceptive_status)
-                ->setCellValue("I{$k}", date('j M Y',strtotime($patient->visit()->orderBy('created_at','DESC')->first()->visit_date)));
+                ->setCellValue("B{$k}", $us->first_name." " .  $us->middle_name ." ". $us->last_name  )
+                ->setCellValue("C{$k}", date('Y')-date('Y',strtotime($us->birth_date)))
+                ->setCellValue("D{$k}", $patient->report->regions->region)
+                ->setCellValue("E{$k}", $patient->report->districts->district)
+                ->setCellValue("F{$k}", Facility::find($us->facility_id)->facility_name)
+                ->setCellValue("G{$k}", $patient->report->marital_status)
+                ->setCellValue("H{$k}", $patient->report->HIV_status)
+                ->setCellValue("I{$k}", $patient->report->contraceptive_status)
+                ->setCellValue("J{$k}", date('j M Y',strtotime($patient->visit()->orderBy('created_at','DESC')->first()->visit_date)));
             $k++;
         }
 
@@ -1404,7 +1406,7 @@ class GeneralController extends \BaseController {
 
         // Redirect output to a client’s web browser (Excel2007)
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
+        header('Content-Disposition: attachment;filename="records.xlsx"');
         header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');
@@ -1446,9 +1448,9 @@ class GeneralController extends \BaseController {
                                 $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
                                 $column[$value1][] = $que->count();
                             }
-                            $title .=" ". $query[2]." ".Input::get('year');;
+
                         }
-                    }
+                    }$title .=" ". $query[2]." ".Input::get('year');;
                 }
                 elseif(Input::get("horizontal") == "Years"){
                     $row = range(Input::get('start'),Input::get('end'));
@@ -1464,9 +1466,9 @@ class GeneralController extends \BaseController {
                                 $que = $this->checkCondition($query,$pat,$key1)->whereBetween('created_at',array($from,$to));
                                 $column[$value1][] = $que->count();
                             }
-                            $title .=" ". $query[2]." ".Input::get('start')." - ".Input::get('end');
+
                         }
-                    }
+                    }$title .=" ". $query[2]." ".Input::get('start')." - ".Input::get('end');
                 }
                 elseif(Input::get("horizontal") == "Age Range"){
                     //setting the limits
@@ -1505,10 +1507,11 @@ class GeneralController extends \BaseController {
                                 $que = $this->checkCondition($query,true,$key1)->whereBetween('birth_date',array($end,$start));
                                 $column[$value1][] = $que->count();
                             }
-                            $title .=" Age Range ". $query[2];
+
                         }
                         $k=$i;
                     }
+                    $title .=" Age Range ". $query[2];
                 }
 
                 // Set document properties
@@ -1520,17 +1523,19 @@ class GeneralController extends \BaseController {
                     ->setKeywords("cancer cecap openxml php")
                     ->setCategory("Result file");
 
+            $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:J1');
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1',$title);
 
                 $latterArr = Array("A","B","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AB","AC","AD","AE","AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ","BA","BB","BC","BD","BE","BF","BG","BH","BI","BJ","BK","BM","BL","BO","BP","BQ","BR","BS","BT","BU","BV","BW","BX","BY","BZ");
                 $ttlecont = 1;
                 $objPHPExcel->setActiveSheetIndex(0)
-                    ->setCellValue('A1', Input::get("show"));
+                    ->setCellValue('A2', Input::get("show"));
                 foreach($row as $header){
                     $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue("{$latterArr[$ttlecont]}1", $header);
+                        ->setCellValue("{$latterArr[$ttlecont]}2", $header);
                     $ttlecont++;
                 }
-                $k=2; $colcount=1;
+                $k=3; $colcount=1;
                 foreach($column as $keys => $cols){
                     $objPHPExcel->setActiveSheetIndex(0)
                         ->setCellValue("A{$k}", $keys);

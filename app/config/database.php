@@ -65,10 +65,10 @@ return array(
 
         'mysql2' => array(
 			'driver'    => 'mysql',
-			'host'      => '162.243.26.128',
+			'host'      => '104.131.118.9',
 			'database'  => 'cervical',
 			'username'  => 'root',
-			'password'  => 'softmed',
+			'password'  => 'kevdom',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

@@ -11,10 +11,10 @@
                     Reasons for the intervention<br>{{ Form::select('indicator',InterventionIndicators::all()->lists('name','id'),'',array('class'=>'form-control','required'=>'requiered')) }}
                 </div>
                 <div class='col-sm-3' id="via_reason">
-                    Tumor Histological Type<br> {{ Form::select('differentiation',array("Squomous Cell Carcinoma"=>"Squomous Cell Carcinoma","Adenocarcinoma"=>"Adenocarcinoma","Adenosquoumous carcinoma"=>"Adenosquoumous carcinoma"),'',array('class'=>'form-control','required'=>'requiered')) }}
+                    Tumor Histological Type<br> {{ Form::select('differentiation',array("none"=>"none","Squomous Cell Carcinoma"=>"Squomous Cell Carcinoma","Adenocarcinoma"=>"Adenocarcinoma","Adenosquoumous carcinoma"=>"Adenosquoumous carcinoma"),'',array('class'=>'form-control','required'=>'requiered')) }}
                 </div>
                 <div class='col-sm-3' id="">
-                    Tumor histology grade<br> {{ Form::select('hist_grade',array("Highly differentiated"=>"Highly differentiated","Moderately differentiated"=>"Moderately differentiated","Low differentiation"=>"Low differentiation"),'',array('class'=>'form-control','required'=>'requiered')) }}
+                    Tumor histology grade<br> {{ Form::select('hist_grade',array("none"=>"none","Highly differentiated"=>"Highly differentiated","Moderately differentiated"=>"Moderately differentiated","Low differentiation"=>"Low differentiation"),'',array('class'=>'form-control','required'=>'requiered')) }}
                 </div>
 
             </div>

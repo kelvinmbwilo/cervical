@@ -10,7 +10,7 @@
                     <span id="hiv_status">HIV test result<br>{{ Form::select('hiv_status',array('Negative'=>'Negative','Positive'=>'Positive'),'',array('class'=>'form-control','required'=>'requiered')) }}</span>
                 </div>
                 <div class='col-sm-4'>
-                    <span id="last_test">Last Test Done In<br> {{ Form::select('last_test',array("last 6 months"=>"last 6 months","last 1 year"=>"last 1 year","over one year ago"=>"over one year ago"),'',array('class'=>'form-control')) }}</span>
+                    <span id="last_test">Last Test Done In<br> {{ Form::select('last_test',array("last 3 months"=>"last 3 months","last 6 months"=>"last 6 months","last 1 year"=>"last 1 year","over one year ago"=>"over one year ago"),'',array('class'=>'form-control')) }}</span>
                 </div>
 
             </div>

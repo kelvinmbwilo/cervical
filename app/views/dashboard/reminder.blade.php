@@ -51,7 +51,7 @@ Reminders
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $us->patient->hospital_id }}</td>
-                            <td style="text-transform: capitalize">{{ $us->patient->first_name }}{{ $us->patient->middle_name }}{{ $us->patient->last_name }}</td>
+                            <td style="text-transform: capitalize">{{ $us->patient->first_name }} {{ $us->patient->middle_name }} {{ $us->patient->last_name }}</td>
                             <td>{{ $us->phone_number }}</td>
                             <td>{{ $us->status }}</td>
                             <td id="{{ $us->id }}">

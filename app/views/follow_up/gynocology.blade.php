@@ -2,7 +2,7 @@
 <div class='form-group'>
 
     <div class='col-sm-6'>
-        Parity <br>{{ Form::select('parity',array_combine(range(1,15), range(1,15)),$gyno->parity,array('class'=>'form-control','required'=>'requiered')) }}
+        Parity <br>{{ Form::select('parity',array_combine(range(0,15), range(0,15)),$gyno->parity,array('class'=>'form-control','required'=>'requiered')) }}
     </div>
     <div class='col-sm-6'>
         Total Number of Pregnancy<br> {{ Form::select('number_of_preg',array_combine(range(0,15), range(0,15)),$gyno->number_of_pregnancy,array('class'=>'form-control','required'=>'requiered')) }}
