@@ -7,7 +7,7 @@
                     Currently using contraception?<br>{{ Form::select('current_on_contra',array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control','required'=>'requiered')) }}
                 </div>
                 <div class='col-sm-6'>
-                    <span id="currcontralist"> List Them<br>{{ Form::select('current_contra',ContraceptiveResult::all()->lists('name','id'),'',array('class'=>'form-control')) }}</span>
+                    <span id="currcontralist"> List Them<br>{{ Form::select('current_contra',ContraceptiveResult::all()->lists('name','id'),'',array('class'=>'form-control','multiple'=>'multiple')) }}</span>
                 </div>
 
             </div>
