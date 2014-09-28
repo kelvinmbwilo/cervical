@@ -15,7 +15,7 @@
         Last Name <br> {{ Form::text('lastname',$patient->last_name,array('class'=>'form-control','placeholder'=>'Last Name','required'=>'required')) }}
     </div>
     <div class='col-sm-6'>
-        Date of Birth <br> {{ Form::text('dob',$patient->birth_date,array('class'=>'form-control','placeholder'=>'Date of Birth','required'=>'required','id'=>'Birth_Date')) }}
+        Date of Birth <br> {{ Form::text('dob',$patient->birth_date,array('class'=>'form-control','placeholder'=>'Date of Birth','required'=>'required','id'=>'Birth_Date1')) }}
     </div>
 </div>
 

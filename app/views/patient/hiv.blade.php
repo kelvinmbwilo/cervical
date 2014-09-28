@@ -4,7 +4,7 @@
 
             <div class='form-group'>
                 <div class='col-sm-4'>
-                    Have you ever tested for HIV?<br>{{ Form::select('hiv_test_status',array('Yes'=>'Yes','No'=>'No'),'',array('class'=>'form-control','required'=>'requiered')) }}
+                    Have you ever tested for HIV?<br>{{ Form::select('hiv_test_status',array('No'=>'No','Yes'=>'Yes'),'',array('class'=>'form-control','required'=>'requiered')) }}
                 </div>
                 <div class='col-sm-4'>
                     <span id="hiv_status">HIV test result<br>{{ Form::select('hiv_status',array('Negative'=>'Negative','Positive'=>'Positive'),'',array('class'=>'form-control','required'=>'requiered')) }}</span>
@@ -23,7 +23,7 @@
                     Is the client on ART? <br> {{ Form::select('art_status',array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control','required'=>'requiered')) }}
                 </div>
                 <div class='col-sm-4'>
-                    What is the latest CD4 count(cells/mm3) (within last 6 months) <br> {{ Form::select('prev_cd4',array_combine(range(0,1500), range(0,1500)),'500',array('class'=>'form-control')) }}
+                    Latest CD4 count(cells/mm3) (within last 6 months) <br> {{ Form::select('prev_cd4',array_combine(range(0,1500), range(0,1500)),'500',array('class'=>'form-control')) }}
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                 var current_cd4 = $("#current_cd4").html();
                 var current_art = $("#current_art").html();
                 var current_test_result = $("#current_test_result").html();
-                $("#positive,#negative").html("");
+                $("#positive,#negative,#last_test,#hiv_status").html("");
                 $("#negative").html(negative);
                 $("#current_cd4").html("");
                 $("#current_art").html("");
@@ -83,28 +83,28 @@
                     }
                 });
 
-
                 $("select[name=hiv_test_status]").change(function(){
                     if($(this).val() == "Yes"){
                         $("#hiv_status").html(hiv_status)
                         $("#last_test").html(last_test)
+                        $("select[name=hiv_status]").change(function(){
+                            if($(this).val() == "Negative"){
+                                $("#positive").html("")
 
+                            }else if($(this).val() == "Positive"){
+                                $("#positive").html(positive)
+
+
+                            }
+                        })
                     }else{
                         $("#hiv_status").html("")
                         $("#last_test").html("")
+                        $("#positive").html("")
                     }
                 });
 
-                $("select[name=hiv_status]").change(function(){
-                    if($(this).val() == "Negative"){
-                        $("#positive").html("")
 
-                    }else if($(this).val() == "Positive"){
-                        $("#positive").html(positive)
-
-
-                    }
-                })
 
 
 

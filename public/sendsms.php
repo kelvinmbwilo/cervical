@@ -6,7 +6,7 @@ $smsClient = new SmsClient("mbwilo", "YWtzx5PH");
 # ----------------------------------------------------------------------------------------------------
 
 $conn = mysql_connect("localhost","root","kevdom");
-mysql_select_db("cancer");
+mysql_select_db("cervical");
 $query = mysql_query('select * from notification WHERE status="pending"');
 while($row = mysql_fetch_array($query)){
 #   example:prepare-message-without-notify-url
