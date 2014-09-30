@@ -133,7 +133,7 @@ $first_visit = $patient->visit()->first();
         <h4>VIA Counseling</h4>
         <div class="row">
             <div class="col-sm-4">
-                @if($visit->via->via_councelling_status == 'yes' )
+                @if($visit->via->via_counselling_status == 'yes' )
                     VIA Counseling Was Offered During The Visit
                 @else
                     VIA Counseling Was Not Offered During The Visit
