@@ -16,23 +16,6 @@ class GeneralController extends \BaseController {
         $quer   =  parent::processRegion($patientquery,$visitquery,Input::get('region'),"");
         $query  =  parent::processDistrict($quer[0],$quer[1],Input::get('district'),$quer[2]);
         $query1 =  parent::processMarital($query[0], $query[1],Input::get('marital'),$query[2]);
-//        $query2 =  parent::processHivStatus($query1[0], $query1[1],Input::get('marital'),$query1[2]);
-//        $query3 =  parent::processHivTest($query2[0], $query2[1],Input::get('marital'),$query2[2]);
-//        $query4 =  parent::processHivCd4Count($query3[0], $query3[1],Input::get('marital'),$query3[2]);
-//        $query5 =  parent::processHivDeclineTest($query4[0], $query4[1],Input::get('marital'),$query4[2]);
-//        $query6 =  parent::processHivTestResult($query5[0], $query5[1],Input::get('marital'),$query5[2]);
-//        $query7 =  parent::processHivDeclineTest($query6[0], $query6[1],Input::get('marital'),$query6[2]);
-//        $query8 =  parent::processMarital($query7[0], $query7[1],Input::get('marital'),$query7[2]);
-//        $query9 =  parent::processMarital($query8[0], $query8[1],Input::get('marital'),$query8[2]);
-//        $query10 = parent::processMarital($query9[0],$query9[1],Input::get('marital'),$query9[2]);
-//        $query11 = parent::processMarital($query10[0],$query10[1],Input::get('marital'),$query10[2]);
-//        $query12 = parent::processMarital($query11[0],$query11[1],Input::get('marital'),$query11[2]);
-//        $query13 = parent::processMarital($query12[0],$query12[1],Input::get('marital'),$query12[2]);
-//        $query14 = parent::processMarital($query13[0],$query13[1],Input::get('marital'),$query13[2]);
-//        $query15 = parent::processMarital($query14[0],$query14[1],Input::get('marital'),$query14[2]);
-//        $query16 = parent::processMarital($query15[0],$query15[1],Input::get('marital'),$query15[2]);
-//        $query17 = parent::processMarital($query16[0],$query16[1],Input::get('marital'),$query16[2]);
-//        $query18 = parent::processMarital($query17[0],$query17[1],Input::get('marital'),$query17[2]);
         $query2 = parent::processDaterange($query1[0],$query1[1],$query1[2]);
 
 
@@ -72,6 +55,18 @@ class GeneralController extends \BaseController {
         }
         if($value == "Contraceptive History"){
             $columntype = array('yes'=>'Using Contraceptive','no'=>'Not Using Contraceptive');
+        }
+        if($value == "Via Counseling"){
+            $columntype = array('no'=>'Counseling Not Done','yes'=>'Counseling Done');
+        }
+        if($value == "Via Tests"){
+            $columntype = array('yes'=>'Test Done','no'=>'Test Not Done');
+        }
+        if($value == "Via Test Result"){
+            $columntype = array('Normal cervix (Negative)'=>'Normal cervix (Negative)','Abnormal cervix (Positive)'=>'Abnormal cervix (Positive)');
+        }
+        if($value == "Via No Test Reason"){
+            $columntype = array('SCJ not seen'=>'SCJ not seen','Heavy menses'=>'Heavy menses','Suspicious of cancer'=>'Suspicious of cancer','Massive endocervical discharge (cervicitis)'=>'Massive endocervical discharge (cervicitis)','pregnancy'=>'pregnancy');
         }
         if($value == "Contraceptive Type"){
             $columntype = ContraceptiveResult::all()->lists('name','id');
@@ -166,6 +161,26 @@ class GeneralController extends \BaseController {
                 ($pat)?
                     $que = $query[0]->whereIn('id', ContraceptiveHistory::where('previous_contraceptive_id',$key1)->get()->lists('patient_id')+ContraceptiveHistory::where('current_contraceptive_id',$key1)->get()->lists('patient_id')+array('0')):
                     $que = $query[1]->whereIn('id', ContraceptiveHistory::where('previous_contraceptive_id',$key1)->get()->lists('visit_id')+ContraceptiveHistory::where('current_contraceptive_id',$key1)->get()->lists('visit_id')+array('0'));
+                break;
+            case "Via Counseling":
+                ($pat)?
+                    $que = $query[0]->whereIn('id', ViaStatus::where('via_counselling_status',$key1)->get()->lists('patient_id')+array('0')):
+                    $que = $query[1]->whereIn('id', ViaStatus::where('via_counselling_status',$key1)->get()->lists('visit_id')+array('0'));
+                break;
+            case "Via Tests":
+                ($pat)?
+                    $que = $query[0]->whereIn('id', ViaStatus::where('via_test_status',$key1)->get()->lists('patient_id')+array('0')):
+                    $que = $query[1]->whereIn('id', ViaStatus::where('via_test_status',$key1)->get()->lists('visit_id')+array('0'));
+                break;
+            case "Via Test Result":
+                ($pat)?
+                    $que = $query[0]->whereIn('id', ViaStatus::where('via_result',$key1)->get()->lists('patient_id')+array('0')):
+                    $que = $query[1]->whereIn('id', ViaStatus::where('via_result',$key1)->get()->lists('visit_id')+array('0'));
+                break;
+            case "Via No Test Reason":
+                ($pat)?
+                    $que = $query[0]->whereIn('id', ViaStatus::where('reject_reason',$key1)->get()->lists('patient_id')+array('0')):
+                    $que = $query[1]->whereIn('id', ViaStatus::where('reject_reason',$key1)->get()->lists('visit_id')+array('0'));
                 break;
             case "Menarche":
                 $arr = explode("-",$key1);
