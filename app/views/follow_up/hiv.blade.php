@@ -23,7 +23,7 @@
                     Is the client on ART? <br> {{ Form::select('art_status',array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control','required'=>'requiered')) }}
                 </div>
                 <div class='col-sm-4'>
-                    Latest CD4 count(cells/mm3) (within last 6 months) <br> {{ Form::select('prev_cd4',array_combine(range(0,1500), range(0,1500)),'500',array('class'=>'form-control')) }}
+                    Latest CD4 count(cells/mm3) (within last 6 months) <br> {{ Form::select('prev_cd4',array('unknown'=>'unknown')+array_combine(range(0,1500), range(0,1500)),'500',array('class'=>'form-control')) }}
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                     <span id="current_test_result">current test results<br>{{ Form::select('current_test_result',array('Negative'=>'Negative','Positive'=>'Positive'),'',array('class'=>'form-control')) }}</span>
                 </div>
                 <div class='col-sm-2'>
-                    <span id="current_cd4">current CD4 (cells/mm3)<br>{{ Form::select('current_cd4',array_combine(range(0,1500), range(0,1500)),'500',array('class'=>'form-control')) }} </span>
+                    <span id="current_cd4">current CD4 (cells/mm3)<br>{{ Form::select('current_cd4',array('unknown'=>'unknown')+array_combine(range(0,1500), range(0,1500)),'500',array('class'=>'form-control')) }} </span>
                 </div>
                 <div class='col-sm-2'>
                     <span id="current_art">ART offered <br>{{ Form::select('current_art_status',array('no'=>'No','yes'=>'Yes'),'',array('class'=>'form-control','required'=>'requiered')) }} </span>

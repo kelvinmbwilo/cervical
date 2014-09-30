@@ -47,7 +47,7 @@ class GeneralController extends \BaseController {
             $columntype = array("Married"=>"Married","Cohabit"=>"Cohabit","Single-never married"=>"Single-never married","Widowed"=>"Widowed","Separated/Divorced"=>"Separated/Divorced");
         }
         if($value == "HIV Status"){
-            $columntype = array('Unknown'=>'Unknown','Negative'=>'Negative','Positive'=>'Positive');
+            $columntype = array(''=>'Unknown','Negative'=>'Negative','Positive'=>'Positive');
         }
         if($value == "CD4 Count"){
             $columntype = array('0-200'=>'0-200','200-400'=>'200-400','400-600'=>'400-600','600-1000'=>'600-1000','1000-1500'=>'1000-1500');
